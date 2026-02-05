@@ -46,7 +46,7 @@
     --terminal-dim: 120 60% 35%;
     --terminal-scanline: 120 100% 2%;
     --terminal-cursor: 120 100% 65%;
-    --terminal-directory: 165 100% 50%;
+    --terminal-warning: 45 100% 50%;
     --terminal-file: 120 60% 55%;
     --terminal-executable: 0 100% 60%;
     --terminal-link: 200 100% 60%;
