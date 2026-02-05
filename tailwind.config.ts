@@ -58,6 +58,7 @@ export default {
           executable: "hsl(var(--terminal-executable))",
           link: "hsl(var(--terminal-link))",
           cursor: "hsl(var(--terminal-cursor))",
+          warning: "hsl(var(--terminal-warning))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
