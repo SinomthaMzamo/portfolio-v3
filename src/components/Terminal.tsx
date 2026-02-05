@@ -57,10 +57,10 @@ export const Terminal: React.FC = () => {
       {/* Terminal Content */}
       <div 
         ref={terminalRef}
-        className="p-4 md:p-6 min-h-[calc(100vh-48px)] overflow-auto cursor-text"
+        className="p-3 md:p-6 h-[calc(100vh-48px)] overflow-y-auto overflow-x-hidden cursor-text"
         onClick={handleTerminalClick}
       >
-        <div className="max-w-4xl mx-auto font-mono text-sm md:text-base">
+        <div className="max-w-4xl mx-auto font-mono text-xs sm:text-sm md:text-base">
           {/* Output Lines */}
           <TerminalOutput lines={lines} />
           
