@@ -170,6 +170,28 @@ export const useTerminal = () => {
         break;
       }
       
+      case 'welcome': {
+        addLine('ascii', ASCII_ARTS.welcome);
+        addLine('output', `
+╔═══════════════════════════════════════════════════════════════════════╗
+║         FULL-STACK DEVELOPER & CLOUD ENGINEER                         ║
+║   Building incredible user interfaces that leave lasting impressions  ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+Welcome to my interactive terminal portfolio!
+
+Type 'help' for available commands, or start exploring with 'ls'.
+
+💡 Quick start:
+   • ls                   - List available sections
+   • cd projects          - Browse my projects
+   • cat bio.txt          - Learn about me
+   • help                 - See all commands
+
+`);
+        break;
+      }
+      
       case 'whoami': {
         addLine('output', WHOAMI_TEXT);
         break;
