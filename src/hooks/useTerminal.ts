@@ -106,12 +106,40 @@ export const useTerminal = () => {
       case 'cd': {
         if (!args || args === '~') {
           setCurrentPath(['~']);
+          // Show contents of home directory
+          const homeDir = FILE_SYSTEM;
+          if (homeDir?.children) {
+            const listing = homeDir.children.map(item => {
+              if (item.type === 'directory') {
+                return `📁 ${item.name}/`;
+              }
+              return `📄 ${item.name}`;
+            }).join('\n');
+            addLine('output', listing);
+          }
           break;
         }
         
         if (args === '..') {
           if (currentPath.length > 1) {
             setCurrentPath(prev => prev.slice(0, -1));
+            // Show contents of parent directory
+            let parentDir: FileItem | null = FILE_SYSTEM;
+            for (let i = 1; i < currentPath.length - 1; i++) {
+              const child = parentDir?.children?.find(c => c.name === currentPath[i]);
+              if (child && child.type === 'directory') {
+                parentDir = child;
+              }
+            }
+            if (parentDir?.children) {
+              const listing = parentDir.children.map(item => {
+                if (item.type === 'directory') {
+                  return `📁 ${item.name}/`;
+                }
+                return `📄 ${item.name}`;
+              }).join('\n');
+              addLine('output', listing);
+            }
           }
           break;
         }
@@ -128,6 +156,16 @@ export const useTerminal = () => {
             addLine('ascii', sectionArt);
           }
           setCurrentPath(prev => [...prev, args]);
+          // Show contents of the new directory
+          if (targetDir.children) {
+            const listing = targetDir.children.map(item => {
+              if (item.type === 'directory') {
+                return `📁 ${item.name}/`;
+              }
+              return `📄 ${item.name}`;
+            }).join('\n');
+            addLine('output', listing);
+          }
         } else {
           addLine('error', `cd: ${args}: No such directory`);
         }
