@@ -25,10 +25,14 @@ export const Terminal: React.FC = () => {
     }
   }, [showWelcome]);
 
+  // Auto-scroll to bottom when lines change
   useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-    }
+    // Use setTimeout to ensure DOM has updated
+    setTimeout(() => {
+      if (terminalRef.current) {
+        terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      }
+    }, 10);
   }, [lines]);
 
   const handleTerminalClick = () => {
@@ -53,10 +57,10 @@ export const Terminal: React.FC = () => {
       {/* Terminal Content */}
       <div 
         ref={terminalRef}
-        className="p-4 md:p-6 min-h-[calc(100vh-48px)] overflow-auto cursor-text"
+        className="p-3 md:p-6 h-[calc(100vh-48px)] overflow-y-auto overflow-x-hidden cursor-text"
         onClick={handleTerminalClick}
       >
-        <div className="max-w-4xl mx-auto font-mono text-sm md:text-base">
+        <div className="max-w-4xl mx-auto font-mono text-xs sm:text-sm md:text-base">
           {/* Output Lines */}
           <TerminalOutput lines={lines} />
           
@@ -73,8 +77,8 @@ export const Terminal: React.FC = () => {
       </div>
       
       {/* Mobile hint */}
-      <div className="fixed bottom-4 left-4 right-4 md:hidden text-center text-xs text-muted-foreground terminal-glow-subtle">
-        Tap to type • Use keyboard for commands
+      <div className="fixed bottom-2 left-2 right-2 md:hidden text-center text-[10px] text-muted-foreground terminal-glow-subtle bg-background/80 py-1 rounded">
+        Tap to type • Type 'help' for commands
       </div>
     </div>
   );

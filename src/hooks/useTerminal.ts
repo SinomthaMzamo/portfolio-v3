@@ -49,7 +49,7 @@ export const useTerminal = () => {
     const command = parts[0];
     const arg = parts.slice(1).join(' ');
     
-    const commands = ['ls', 'cd', 'cat', 'pwd', 'clear', 'help', 'whoami', 'tree'];
+    const commands = ['ls', 'cd', 'cat', 'pwd', 'clear', 'help', 'whoami', 'tree', 'welcome'];
     
     if (parts.length === 1) {
       return commands.filter(c => c.startsWith(command));
@@ -167,6 +167,28 @@ export const useTerminal = () => {
       case 'help': {
         addLine('ascii', ASCII_ARTS.help);
         addLine('output', HELP_TEXT);
+        break;
+      }
+      
+      case 'welcome': {
+        addLine('ascii', ASCII_ARTS.welcome);
+        addLine('output', `
+╔═══════════════════════════════════════════════════════════════════════╗
+║         FULL-STACK DEVELOPER & CLOUD ENGINEER                         ║
+║   Building incredible user interfaces that leave lasting impressions  ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+Welcome to my interactive terminal portfolio!
+
+Type 'help' for available commands, or start exploring with 'ls'.
+
+💡 Quick start:
+   • ls                   - List available sections
+   • cd projects          - Browse my projects
+   • cat bio.txt          - Learn about me
+   • help                 - See all commands
+
+`);
         break;
       }
       
