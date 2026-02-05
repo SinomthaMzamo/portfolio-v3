@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        mono: ["'JetBrains Mono'", "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +50,16 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        terminal: {
+          glow: "hsl(var(--terminal-glow))",
+          dim: "hsl(var(--terminal-dim))",
+          directory: "hsl(var(--terminal-directory))",
+          file: "hsl(var(--terminal-file))",
+          executable: "hsl(var(--terminal-executable))",
+          link: "hsl(var(--terminal-link))",
+          cursor: "hsl(var(--terminal-cursor))",
+          warning: "hsl(var(--terminal-warning))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -65,25 +78,27 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        blink: {
+          "0%, 50%": { opacity: "1" },
+          "51%, 100%": { opacity: "0" },
+        },
+        typewriter: {
+          from: { width: "0" },
+          to: { width: "100%" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        blink: "blink 1s step-end infinite",
+        typewriter: "typewriter 2s steps(40) forwards",
       },
     },
   },
