@@ -77,8 +77,8 @@ export const Terminal: React.FC = () => {
       </div>
       
       {/* Mobile hint */}
-      <div className="fixed bottom-4 left-4 right-4 md:hidden text-center text-xs text-muted-foreground terminal-glow-subtle">
-        Tap to type • Use keyboard for commands
+      <div className="fixed bottom-2 left-2 right-2 md:hidden text-center text-[10px] text-muted-foreground terminal-glow-subtle bg-background/80 py-1 rounded">
+        Tap to type • Type 'help' for commands
       </div>
     </div>
   );

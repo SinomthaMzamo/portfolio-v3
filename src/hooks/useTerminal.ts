@@ -49,7 +49,7 @@ export const useTerminal = () => {
     const command = parts[0];
     const arg = parts.slice(1).join(' ');
     
-    const commands = ['ls', 'cd', 'cat', 'pwd', 'clear', 'help', 'whoami', 'tree'];
+    const commands = ['ls', 'cd', 'cat', 'pwd', 'clear', 'help', 'whoami', 'tree', 'welcome'];
     
     if (parts.length === 1) {
       return commands.filter(c => c.startsWith(command));

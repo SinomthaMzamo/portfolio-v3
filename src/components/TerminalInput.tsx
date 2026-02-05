@@ -42,7 +42,7 @@ export const TerminalInput: React.FC<TerminalInputProps> = ({
       
       if (parts.length === 1) {
         // Complete commands
-        const commands = ['ls', 'cd', 'cat', 'pwd', 'clear', 'help', 'whoami', 'tree'];
+        const commands = ['ls', 'cd', 'cat', 'pwd', 'clear', 'help', 'whoami', 'tree', 'welcome'];
         completions = commands.filter(c => c.startsWith(command));
       } else if (['cd', 'cat'].includes(command) && currentDir?.children) {
         // Complete file/directory names

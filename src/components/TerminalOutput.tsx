@@ -34,7 +34,7 @@ export const TerminalOutput: React.FC<TerminalOutputProps> = ({ lines }) => {
           )}
           
           {line.type === 'ascii' && (
-            <pre className="ascii-art text-xs md:text-sm leading-none overflow-x-auto">
+            <pre className="ascii-art text-[6px] sm:text-[8px] md:text-sm leading-none overflow-x-auto whitespace-pre">
               {line.content}
             </pre>
           )}

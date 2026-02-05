@@ -630,6 +630,7 @@ export const HELP_TEXT = `
   help            Show this help message
   whoami          Display user information
   tree            Show directory structure
+  welcome         Show the welcome screen again
   
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
