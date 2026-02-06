@@ -46,12 +46,12 @@ export const KingdomMap = ({
 
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 md:py-16">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-8"
+        className="text-center mb-12 md:mb-16"
       >
         <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-glow mb-2">
           The Developer's Realm
@@ -193,7 +193,7 @@ export const KingdomMap = ({
               <span className="font-display text-xs text-accent">About Me</span>
             </motion.button>
           </motion.div>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-16">
+          <div className="grid grid-cols-2 gap-x-10 gap-y-10">
             {kingdoms.map((kingdom, index) => (
               <motion.div
                 key={kingdom.id}

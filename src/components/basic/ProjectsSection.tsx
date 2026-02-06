@@ -8,7 +8,7 @@ export const ProjectsSection = () => {
   if (!projectsKingdom) return null;
 
   return (
-    <section className="py-24 px-6 bg-card/30">
+    <section id="projects" className="py-24 px-6 bg-card/30">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -4,7 +4,7 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 relative">
+    <section id="hero" className="min-h-screen flex flex-col items-center justify-center px-6 relative pt-12">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
