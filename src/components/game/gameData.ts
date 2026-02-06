@@ -44,6 +44,7 @@ export interface Mission {
   unlocked: boolean;
   gameType: "memory" | "crossword" | "dragdrop";
   gameData: GameData;
+  targetScore:number;
 }
 
 export interface GameData {

@@ -15,10 +15,25 @@ import {
   SiAmazons3,
   SiAmazonec2,
   SiAwslambda,
+  SiAmazondynamodb,
   SiSwift,
   SiRust,
   SiExpo,
+  SiStarship,
+  SiPostgresql,
+  SiAngular,
+  SiNetflix,
 } from "react-icons/si";
+
+import { GiSoapExperiment, GiStarSwirl } from "react-icons/gi";
+import { TbJson } from "react-icons/tb";
+
+
+
+import {
+  RiFormula
+}
+from "react-icons/ri"
 
 import {
   FaCloud,
@@ -37,15 +52,28 @@ import {
   FaStar,
   FaSatelliteDish,
   FaJava,
+  FaFigma,
+  FaServer,
+  FaCalculator,
+  FaFileInvoiceDollar,
+  FaShopify,
+  FaFacebookSquare,
+  FaGithub,
 } from "react-icons/fa";
 
 import type { IconType } from "react-icons";
+import { IoTelescopeSharp, IoLogoAngular } from "react-icons/io5";
+import { FaSquareXTwitter } from "react-icons/fa6";
+
+
 
 export const techIcons: Record<string, IconType> = {
   React: SiReact,
+  Angular: IoLogoAngular,
   TypeScript: SiTypescript,
   API: FaProjectDiagram,
   Payment: FaCreditCard,
+  Invoice: FaFileInvoiceDollar,
   UX: FaPaintBrush,
   Form: FaRegIdBadge,
   Kotlin: SiKotlin,
@@ -80,7 +108,22 @@ export const techIcons: Record<string, IconType> = {
   Cargo: FaBoxOpen,
   Star: FaStar,
   Satellite: FaSatelliteDish,
-
+  Rocket: SiStarship,
+  Formula: RiFormula,
+  Calculator: FaCalculator,
+  Experiment: GiSoapExperiment,
+  Galaxy: GiStarSwirl,
+  Telescope: IoTelescopeSharp,
+  Dynamodb: SiAmazondynamodb,
+  Server: FaServer,
+  PGSQL: SiPostgresql,
+  JSON: TbJson,
+  Figma: FaFigma,
+  Shopify: FaShopify,
+  Facebook: FaFacebookSquare,
+  Netflix: SiNetflix,
+  Twitter: FaSquareXTwitter,
+  GitHub: FaGithub,
 };
 
 

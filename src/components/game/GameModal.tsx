@@ -155,14 +155,16 @@ export const GameModal = ({ mission, onComplete, onClose }: GameModalProps) => {
                   onClose={onClose}
                 />
               )} */}
-              {/* {selectedGame === "candycrush" && (
+              {selectedGame === "candycrush" && (
                 <CandyCrushGame
-                  icons={mission.gameData.icons}
-                  targetScore={mission.gameData.targetScore}
+                  icons={mission.gameData.matchThree.map((icon) => icon.icon)}
+                  targetScore={mission.targetScore}
                   onComplete={handleComplete}
                   onClose={onClose}
+                  iconColourMap={mission.gameData.matchThree}
+            
                 />
-              )} */}
+              )}
             </>
           )}
         </motion.div>

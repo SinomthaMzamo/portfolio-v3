@@ -1,13 +1,15 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
+import { techIcons } from "./MemoryGame";
 
 interface CandyCrushGameProps {
   icons?: string[];
   targetScore?: number;
   onComplete: () => void;
   onClose: () => void;
+  iconColourMap: {icon:string; colour:string}[];
 }
 
 const defaultIcons = ["⚛️", "🟦", "🟨", "🟩", "🟪", "🔶"];
@@ -16,12 +18,13 @@ const GRID_SIZE = 6;
 const MATCH_MIN = 3;
 
 type Cell = {
-  icon: string;
+  icon: {icon:string; colour:string};
   id: number;
 };
 
 export const CandyCrushGame = ({
   icons = defaultIcons,
+  iconColourMap,
   targetScore = 100,
   onComplete,
   onClose,
@@ -33,46 +36,124 @@ export const CandyCrushGame = ({
   const [score, setScore] = useState(0);
   const [moves, setMoves] = useState(20);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [cellId, setCellId] = useState(0);
+  // const [cellId, setCellId] = useState(0);
+  const idRef = useRef(0);
+  const nextId = () => idRef.current++;
 
   const getRandomIcon = useCallback(() => {
-    return icons[Math.floor(Math.random() * icons.length)];
-  }, [icons]);
+    return iconColourMap[Math.floor(Math.random() * iconColourMap.length)];
+  }, [iconColourMap]);
 
-  const createCell = useCallback((): Cell => {
-    setCellId((prev) => prev + 1);
-    return { icon: getRandomIcon(), id: cellId };
-  }, [getRandomIcon, cellId]);
 
   const initializeGrid = useCallback(() => {
-    let id = 0;
+    idRef.current = 0;
     const newGrid: Cell[][] = [];
+
     for (let row = 0; row < GRID_SIZE; row++) {
       const newRow: Cell[] = [];
       for (let col = 0; col < GRID_SIZE; col++) {
         let icon = getRandomIcon();
-        // Avoid initial matches
+
         while (
           (col >= 2 &&
-            newRow[col - 1]?.icon === icon &&
-            newRow[col - 2]?.icon === icon) ||
+            newRow[col - 1]?.icon.icon === icon.icon &&
+            newRow[col - 2]?.icon.icon === icon.icon) ||
           (row >= 2 &&
-            newGrid[row - 1]?.[col]?.icon === icon &&
-            newGrid[row - 2]?.[col]?.icon === icon)
+            newGrid[row - 1]?.[col]?.icon.icon === icon.icon &&
+            newGrid[row - 2]?.[col]?.icon.icon === icon.icon)
         ) {
           icon = getRandomIcon();
         }
-        newRow.push({ icon, id: id++ });
+
+        newRow.push({ icon, id: nextId() });
       }
       newGrid.push(newRow);
     }
-    setCellId(id);
+
     return newGrid;
   }, [getRandomIcon]);
+
 
   useEffect(() => {
     setGrid(initializeGrid());
   }, [initializeGrid]);
+
+  const hasMatchAt = (g: Cell[][], r: number, c: number) => {
+    const icon = g[r]?.[c]?.icon?.icon;
+    if (!icon) return false;
+
+    // count horizontal
+    let count = 1;
+    for (let x = c - 1; x >= 0 && g[r][x]?.icon.icon === icon; x--) count++;
+    for (let x = c + 1; x < GRID_SIZE && g[r][x]?.icon.icon === icon; x++)
+      count++;
+    if (count >= MATCH_MIN) return true;
+
+    // count vertical
+    count = 1;
+    for (let y = r - 1; y >= 0 && g[y][c]?.icon.icon === icon; y--) count++;
+    for (let y = r + 1; y < GRID_SIZE && g[y][c]?.icon.icon === icon; y++)
+      count++;
+    return count >= MATCH_MIN;
+  };
+
+  const hasAnyValidMove = (g: Cell[][]) => {
+    for (let r = 0; r < GRID_SIZE; r++) {
+      for (let c = 0; c < GRID_SIZE; c++) {
+        // swap right
+        if (c + 1 < GRID_SIZE) {
+          const swapped = swapInGrid(g, r, c, r, c + 1);
+          if (hasMatchAt(swapped, r, c) || hasMatchAt(swapped, r, c + 1))
+            return true;
+        }
+        // swap down
+        if (r + 1 < GRID_SIZE) {
+          const swapped = swapInGrid(g, r, c, r + 1, c);
+          if (hasMatchAt(swapped, r, c) || hasMatchAt(swapped, r + 1, c))
+            return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  const shuffleGrid = (g: Cell[][]) => {
+    const flat = g.flat();
+
+    for (let i = flat.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [flat[i], flat[j]] = [flat[j], flat[i]];
+    }
+
+    const reshuffled: Cell[][] = [];
+    let idx = 0;
+    for (let r = 0; r < GRID_SIZE; r++) {
+      const row: Cell[] = [];
+      for (let c = 0; c < GRID_SIZE; c++) row.push(flat[idx++]);
+      reshuffled.push(row);
+    }
+    return reshuffled;
+  };
+
+  const reshuffleIfStuck = (g: Cell[][]) => {
+    let attempt = 0;
+    let candidate = g;
+
+    while (attempt < 25) {
+      candidate = shuffleGrid(candidate);
+
+      const hasInstantMatches = findMatches(candidate).size > 0;
+      const hasMove = hasAnyValidMove(candidate);
+
+      if (!hasInstantMatches && hasMove) return candidate;
+      attempt++;
+    }
+
+    // fallback: if unlucky, just regenerate a fresh grid
+    return initializeGrid();
+  };
+
+
 
   const findMatches = useCallback((currentGrid: Cell[][]): Set<string> => {
     const matches = new Set<string>();
@@ -85,7 +166,7 @@ export const CandyCrushGame = ({
         let matchLength = 1;
         while (
           col + matchLength < GRID_SIZE &&
-          currentGrid[row][col + matchLength]?.icon === icon
+          currentGrid[row][col + matchLength]?.icon.icon === icon.icon
         ) {
           matchLength++;
         }
@@ -105,7 +186,7 @@ export const CandyCrushGame = ({
         let matchLength = 1;
         while (
           row + matchLength < GRID_SIZE &&
-          currentGrid[row + matchLength]?.[col]?.icon === icon
+          currentGrid[row + matchLength]?.[col]?.icon.icon === icon.icon
         ) {
           matchLength++;
         }
@@ -122,42 +203,38 @@ export const CandyCrushGame = ({
 
   const removeMatchesAndDrop = useCallback(
     (currentGrid: Cell[][], matches: Set<string>): Cell[][] => {
-      const newGrid = currentGrid.map((row) => [...row]);
-      let newId = cellId;
+      const newGrid = currentGrid.map((row) => row.slice());
 
-      // Remove matches (set to null temporarily)
       matches.forEach((pos) => {
         const [row, col] = pos.split(",").map(Number);
         newGrid[row][col] = null as any;
       });
 
-      // Drop cells down
       for (let col = 0; col < GRID_SIZE; col++) {
-        let emptyRow = GRID_SIZE - 1;
+        let writeRow = GRID_SIZE - 1;
+
         for (let row = GRID_SIZE - 1; row >= 0; row--) {
           if (newGrid[row][col] !== null) {
-            if (row !== emptyRow) {
-              newGrid[emptyRow][col] = newGrid[row][col];
-              newGrid[row][col] = null as any;
-            }
-            emptyRow--;
+            newGrid[writeRow][col] = newGrid[row][col];
+            if (writeRow !== row) newGrid[row][col] = null as any;
+            writeRow--;
           }
         }
-        // Fill empty cells with new icons
-        for (let row = emptyRow; row >= 0; row--) {
-          newGrid[row][col] = { icon: getRandomIcon(), id: newId++ };
+
+        for (let row = writeRow; row >= 0; row--) {
+          newGrid[row][col] = { icon: getRandomIcon(), id: nextId() };
         }
       }
 
-      setCellId(newId);
       return newGrid;
     },
-    [cellId, getRandomIcon],
+    [getRandomIcon],
   );
+
 
   const processMatches = useCallback(
     async (currentGrid: Cell[][]) => {
-      let grid = currentGrid;
+      let grid = currentGrid.map((r) => r.slice());
       let totalMatches = 0;
 
       while (true) {
@@ -176,21 +253,37 @@ export const CandyCrushGame = ({
         setScore((prev) => prev + points);
       }
 
+      // reshuffle after cascades stop
+      if (!hasAnyValidMove(grid)) {
+        grid = reshuffleIfStuck(grid);
+        setGrid(grid.map((r) => r.slice()));
+      }
+      // reshuffle after cascades stop
+      if (!hasAnyValidMove(grid)) {
+        grid = reshuffleIfStuck(grid);
+        setGrid(grid.map((r) => r.slice()));
+      }
+
       setIsAnimating(false);
     },
     [findMatches, removeMatchesAndDrop],
   );
 
-  const swapCells = useCallback(
-    (row1: number, col1: number, row2: number, col2: number) => {
-      const newGrid = grid.map((row) => [...row]);
-      const temp = newGrid[row1][col1];
-      newGrid[row1][col1] = newGrid[row2][col2];
-      newGrid[row2][col2] = temp;
-      return newGrid;
-    },
-    [grid],
-  );
+ function swapInGrid(
+   g: Cell[][],
+   r1: number,
+   c1: number,
+   r2: number,
+   c2: number,
+ ) {
+   const newGrid = g.map((row) => row.slice());
+   const temp = newGrid[r1][c1];
+   newGrid[r1][c1] = newGrid[r2][c2];
+   newGrid[r2][c2] = temp;
+   return newGrid;
+ }
+
+
 
   const handleCellClick = useCallback(
     (row: number, col: number) => {
@@ -201,9 +294,14 @@ export const CandyCrushGame = ({
         return;
       }
 
+      const r1 = selected.row,
+        c1 = selected.col;
+      const r2 = row,
+        c2 = col;
+
       const isAdjacent =
-        (Math.abs(selected.row - row) === 1 && selected.col === col) ||
-        (Math.abs(selected.col - col) === 1 && selected.row === row);
+        (Math.abs(r1 - r2) === 1 && c1 === c2) ||
+        (Math.abs(c1 - c2) === 1 && r1 === r2);
 
       if (!isAdjacent) {
         setSelected({ row, col });
@@ -211,33 +309,36 @@ export const CandyCrushGame = ({
       }
 
       setIsAnimating(true);
-      setMoves((prev) => prev - 1);
+      setSelected(null);
 
-      const newGrid = swapCells(selected.row, selected.col, row, col);
-      const matches = findMatches(newGrid);
+      // use the CURRENT grid safely
+      const swapped = swapInGrid(grid, r1, c1, r2, c2);
 
-      if (matches.size > 0) {
-        setGrid(newGrid);
-        setSelected(null);
-        processMatches(newGrid);
+      // VALID if the swap causes a match at either swapped position
+      const valid = hasMatchAt(swapped, r1, c1) || hasMatchAt(swapped, r2, c2);
+
+      if (valid) {
+        setMoves((prev) => prev - 1);
+        setGrid(swapped);
+        processMatches(swapped);
       } else {
-        // Swap back if no matches
-        setGrid(newGrid);
+        // show swap briefly then revert using the SAME swapped grid
+        setGrid(swapped);
         setTimeout(() => {
-          setGrid(swapCells(row, col, selected.row, selected.col));
+          setGrid(swapInGrid(swapped, r1, c1, r2, c2)); // swap back deterministically
           setIsAnimating(false);
-        }, 300);
-        setSelected(null);
+        }, 250);
       }
     },
-    [selected, isAnimating, moves, swapCells, findMatches, processMatches],
+    [grid, selected, isAnimating, moves, processMatches],
   );
+
+
 
   const isCompleted = score >= targetScore;
   const isGameOver = moves <= 0 && !isCompleted;
 
   if (grid.length === 0) return null;
-
   return (
     <div className="p-4 sm:p-6">
       {/* Score and Moves */}
@@ -286,9 +387,15 @@ export const CandyCrushGame = ({
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleCellClick(rowIndex, colIndex)}
                 disabled={isAnimating || isCompleted || isGameOver}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-secondary/50 flex items-center justify-center text-xl sm:text-2xl transition-all hover:bg-secondary"
+                style={{ backgroundColor: cell.icon.colour }}
+                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-${cell.icon.colour}-400/40 flex items-center justify-center text-xl sm:text-2xl transition-all hover:bg-${cell.icon.colour}-400/60
+`}
               >
-                {cell?.icon}
+                {/* {cell?.icon} */}
+                {(() => {
+                  const Icon = techIcons[cell.icon.icon];
+                  return Icon && <Icon className="w-6 h-6 sm:w-8 sm:h-8" />;
+                })()}
               </motion.button>
             ))}
           </div>
