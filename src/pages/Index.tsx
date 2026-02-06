@@ -2,7 +2,7 @@ import Realm from "@/components/game/Realm";
 import { Terminal } from "@/components/Terminal";
 import BasicPortfolio from "@/components/basic/BasicPortfolio";
 import { ModeSelector, ViewMode } from "@/components/ModeSelector";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const pageVariants = {
@@ -21,12 +21,23 @@ const Index = () => {
 
   const themeClass = useMemo(() => {
     if (view === "terminal") return "theme-terminal";
-    return "theme-game";
+    if (view === "game") return "theme-game";
+    return "theme-game"; // basic uses game theme styling
   }, [view]);
 
+  useEffect(() => {
+    document.documentElement.classList.remove("theme-terminal", "theme-game");
+    document.documentElement.classList.add(themeClass);
+
+    return () => {
+      document.documentElement.classList.remove(themeClass);
+    };
+  }, [themeClass]);
+
   return (
-    <div className={themeClass}>
+    <>
       <ModeSelector current={view} onChange={setView} />
+
       <AnimatePresence mode="wait">
         {view === "terminal" && (
           <motion.div
@@ -40,6 +51,7 @@ const Index = () => {
             <Terminal />
           </motion.div>
         )}
+
         {view === "game" && (
           <motion.div
             key="game"
@@ -52,6 +64,7 @@ const Index = () => {
             <Realm />
           </motion.div>
         )}
+
         {view === "basic" && (
           <motion.div
             key="basic"
@@ -65,7 +78,7 @@ const Index = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 

@@ -10,7 +10,7 @@
 @layer base {
   .theme-terminal {
     /* CRT Terminal Colors */
-    --background: 120 100% 2%;
+    --background: 0 0% 0%;
     --foreground: 120 100% 65%;
     
     --card: 120 100% 4%;

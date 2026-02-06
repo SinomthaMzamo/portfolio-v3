@@ -41,7 +41,18 @@ export const Terminal: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#222422] crt-container crt-flicker rounded-2xl m-6 border border-green-400/50 bg-black/70 shadow-[0_0_20px_rgba(57,255,20,0.85)]">
+    <div
+      className="mx-auto my-20
+  min-h-[75vh] sm:min-h-[85vh]
+  max-h-[75vh] sm:max-h-[85vh]
+  w-full
+  max-w-[95vw] sm:max-w-[760px]
+  bg-[#171716]
+  crt-container crt-flicker
+  rounded-2xl
+  border border-green-400/50
+  shadow-[0_0_20px_rgba(57,255,20,0.85)]"
+    >
       {/* Terminal Header */}
       <div className="sticky top-0 z-20 bg-secondary/90 backdrop-blur-sm border-b border-border px-4 py-2 flex items-center gap-2">
         <div className="flex gap-2">
