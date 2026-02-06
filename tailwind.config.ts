@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -14,14 +19,18 @@ export default {
     },
     extend: {
       fontFamily: {
-        mono: ["'JetBrains Mono'", "monospace"],
+        display: ["Cinzel", "serif"],
+        body: ["Inter", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -50,6 +59,19 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+
+        // Used by the "game/kingdom" theme
+        kingdom: {
+          locked: "hsl(var(--kingdom-locked))",
+          unlocked: "hsl(var(--kingdom-unlocked))",
+        },
+        node: {
+          inactive: "hsl(var(--node-inactive))",
+          active: "hsl(var(--node-active))",
+          complete: "hsl(var(--node-complete))",
+        },
+
+        // Used by the "terminal" theme
         terminal: {
           glow: "hsl(var(--terminal-glow))",
           dim: "hsl(var(--terminal-dim))",
@@ -60,6 +82,8 @@ export default {
           cursor: "hsl(var(--terminal-cursor))",
           warning: "hsl(var(--terminal-warning))",
         },
+
+        // Shared sidebar tokens (both themes use these)
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -71,11 +95,13 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -85,6 +111,22 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+
+        // game theme
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 20px hsl(174 72% 56% / 0.4)" },
+          "50%": { boxShadow: "0 0 40px hsl(174 72% 56% / 0.7)" },
+        },
+
+        // terminal theme
         blink: {
           "0%, 50%": { opacity: "1" },
           "51%, 100%": { opacity: "0" },
@@ -94,9 +136,17 @@ export default {
           to: { width: "100%" },
         },
       },
+
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+
+        // game theme
+        "fade-in": "fade-in 0.5s ease-out",
+        "scale-in": "scale-in 0.3s ease-out",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+
+        // terminal theme
         blink: "blink 1s step-end infinite",
         typewriter: "typewriter 2s steps(40) forwards",
       },

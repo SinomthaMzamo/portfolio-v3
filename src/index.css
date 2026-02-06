@@ -8,7 +8,7 @@
 /* Terminal CRT Design System */
 
 @layer base {
-  :root {
+  .theme-terminal {
     /* CRT Terminal Colors */
     --background: 120 100% 2%;
     --foreground: 120 100% 65%;
@@ -62,6 +62,67 @@
     --sidebar-border: 120 60% 20%;
     --sidebar-ring: 120 100% 50%;
   }
+
+  .theme-game {
+    --background: 210 25% 8%;
+    --foreground: 180 20% 95%;
+
+    --card: 210 30% 12%;
+    --card-foreground: 180 20% 95%;
+
+    --popover: 210 30% 10%;
+    --popover-foreground: 180 20% 95%;
+
+    --primary: 174 72% 56%;
+    --primary-foreground: 210 25% 8%;
+
+    --secondary: 210 25% 18%;
+    --secondary-foreground: 180 20% 90%;
+
+    --muted: 210 20% 20%;
+    --muted-foreground: 210 15% 55%;
+
+    --accent: 45 90% 55%;
+    --accent-foreground: 210 25% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 174 40% 25%;
+    --input: 210 25% 18%;
+    --ring: 174 72% 56%;
+
+    --radius: 0.75rem;
+
+    /* Custom game theme variables */
+    --glow-primary: 174 72% 56%;
+    --glow-accent: 45 90% 55%;
+    --kingdom-locked: 210 20% 25%;
+    --kingdom-unlocked: 174 50% 35%;
+    --node-inactive: 210 20% 20%;
+    --node-active: 174 72% 40%;
+    --node-complete: 45 80% 50%;
+    
+    /* Gradients */
+    --gradient-dark: linear-gradient(180deg, hsl(210 30% 6%) 0%, hsl(210 25% 12%) 100%);
+    --gradient-kingdom: linear-gradient(135deg, hsl(210 30% 15%) 0%, hsl(210 25% 8%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(174 72% 56% / 0.3) 0%, hsl(174 72% 40% / 0.1) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 90% 55%) 0%, hsl(35 85% 45%) 100%);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsl(174 72% 56% / 0.4);
+    --shadow-gold: 0 0 20px hsl(45 90% 55% / 0.5);
+    --shadow-soft: 0 10px 40px hsl(210 30% 5% / 0.6);
+
+    --sidebar-background: 210 30% 10%;
+    --sidebar-foreground: 180 20% 95%;
+    --sidebar-primary: 174 72% 56%;
+    --sidebar-primary-foreground: 210 25% 8%;
+    --sidebar-accent: 210 25% 18%;
+    --sidebar-accent-foreground: 180 20% 95%;
+    --sidebar-border: 174 40% 25%;
+    --sidebar-ring: 174 72% 56%;
+  }
 }
 
 @layer base {
@@ -81,12 +142,12 @@
 
 /* CRT Effects */
 @layer utilities {
-  .crt-container {
+  .theme-terminal .crt-container {
     position: relative;
     overflow: hidden;
   }
   
-  .crt-container::before {
+  .theme-terminal .crt-container::before {
     content: "";
     position: absolute;
     top: 0;
@@ -102,7 +163,7 @@
     z-index: 10;
   }
   
-  .crt-container::after {
+  .theme-terminal .crt-container::after {
     content: "";
     position: absolute;
     top: 0;
@@ -118,39 +179,150 @@
     z-index: 10;
   }
   
-  .terminal-glow {
+  .theme-terminal .terminal-glow {
     text-shadow: 
       0 0 5px hsl(var(--terminal-glow)),
       0 0 10px hsl(var(--terminal-glow) / 0.7),
       0 0 20px hsl(var(--terminal-glow) / 0.4);
   }
   
-  .terminal-glow-subtle {
+  .theme-terminal .terminal-glow-subtle {
     text-shadow: 
       0 0 3px hsl(var(--terminal-glow) / 0.6),
       0 0 6px hsl(var(--terminal-glow) / 0.3);
   }
   
-  .terminal-directory {
+  .theme-terminal .terminal-directory {
     color: hsl(var(--terminal-directory));
     text-shadow: 0 0 5px hsl(var(--terminal-directory) / 0.7);
   }
   
-  .terminal-file {
+  .theme-terminal .terminal-file {
     color: hsl(var(--terminal-file));
   }
   
-  .terminal-link {
+  .theme-terminal .terminal-link {
     color: hsl(var(--terminal-link));
     text-shadow: 0 0 5px hsl(var(--terminal-link) / 0.5);
   }
   
-  .ascii-art {
+  .theme-terminal .ascii-art {
     color: hsl(var(--primary));
     text-shadow: 
       0 0 8px hsl(var(--terminal-glow)),
       0 0 15px hsl(var(--terminal-glow) / 0.5);
     line-height: 1.1;
+  }
+
+  /* game effects */
+  .theme-game .font-display {
+    font-family: 'Cinzel', serif;
+  }
+
+  .theme-game .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .theme-game .glow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .theme-game .text-glow {
+    text-shadow: 0 0 20px hsl(174 72% 56% / 0.6);
+  }
+
+  .theme-game .text-glow-gold {
+    text-shadow: 0 0 15px hsl(45 90% 55% / 0.7);
+  }
+
+  .theme-game .bg-gradient-dark {
+    background: var(--gradient-dark);
+  }
+
+  .theme-game .bg-gradient-kingdom {
+    background: var(--gradient-kingdom);
+  }
+
+  .theme-game .bg-gradient-glow {
+    background: var(--gradient-glow);
+  }
+
+  .theme-game .kingdom-node {
+    @apply relative transition-all duration-300;
+  }
+
+  .theme-game .kingdom-node::before {
+    content: '';
+    @apply absolute inset-0 rounded-full opacity-0 transition-opacity duration-300;
+    background: radial-gradient(circle, hsl(174 72% 56% / 0.4) 0%, transparent 70%);
+  }
+
+  .theme-game .kingdom-node:hover::before {
+    @apply opacity-100;
+  }
+
+  .theme-game .mission-path {
+    stroke-dasharray: 8 4;
+    animation: dash 20s linear infinite;
+  }
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -100;
+    }
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px hsl(174 72% 56% / 0.4); }
+    50% { box-shadow: 0 0 40px hsl(174 72% 56% / 0.7); }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(174 72% 56% / 0.2) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .card-reveal {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: hsl(174 72% 56%);
+    animation: particle 2s ease-out forwards;
+  }
+
+  @keyframes particle {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
   }
 }
 
