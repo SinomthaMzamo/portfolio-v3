@@ -38,7 +38,7 @@ export const kingdoms: Kingdom[] = [
     description: "Featured creations and builds",
     icon: Code,
     colour: "from-cyan-500 to-teal-600",
-    position: { angle: 0, distance: 180 },
+    position: { angle: 0, distance: 240 },
     missions: [
       {
         id: "debt-mgmt",
@@ -67,7 +67,7 @@ export const kingdoms: Kingdom[] = [
             { layerPosition: 2, description: "monitoring dashboard", icon: "" },
           ],
           matchThree: [
-            { colour: "yellow", icon: "Calculator" },
+            { colour: "blueviolet", icon: "Calculator" },
             { colour: "mediumpurple", icon: "React" },
             { colour: "salmon", icon: "Form" },
             { colour: "limegreen", icon: "Invoice" },
@@ -86,7 +86,7 @@ export const kingdoms: Kingdom[] = [
     description: "Professional journey and roles",
     icon: Briefcase,
     colour: "from-amber-500 to-orange-600",
-    position: { angle: 60, distance: 180 },
+    position: { angle: 60, distance: 240 },
     missions: [
       {
         id: "software-dev-intern",
@@ -130,11 +130,11 @@ export const kingdoms: Kingdom[] = [
           ],
           matchThree: [
             { colour: "cornflowerblue", icon: "TypeScript" },
-            { colour: "pink", icon: "Figma" },
+            { colour: "darksalmon", icon: "Figma" },
             { colour: "blue", icon: "Docker" },
             { colour: "crimson", icon: "Angular" },
             { colour: "green", icon: "Node" },
-            { colour: "aliceblue", icon: "Cloud" },
+            { colour: "dodgerblue", icon: "Cloud" },
           ],
           memoryMatch: ["React", "TypeScript", "Sprint", "QA", "SDK", "API"],
         },
@@ -148,7 +148,7 @@ export const kingdoms: Kingdom[] = [
     description: "Technical abilities and tools",
     icon: Award,
     colour: "from-purple-500 to-indigo-600",
-    position: { angle: 120, distance: 180 },
+    position: { angle: 120, distance: 240 },
     missions: [
       {
         id: "backend-apis",
@@ -190,7 +190,7 @@ export const kingdoms: Kingdom[] = [
             { layerPosition: 2, description: "", icon: "" },
           ],
           matchThree: [
-            { colour: "yellow", icon: "Server" },
+            { colour: "mediumpurple", icon: "Server" },
             { colour: "green", icon: "Node" },
             { colour: "crimson", icon: "JSON" },
             { colour: "cornflowerblue", icon: "PGSQL" },
@@ -208,7 +208,7 @@ export const kingdoms: Kingdom[] = [
     description: "Academic achievements",
     icon: GraduationCap,
     colour: "from-emerald-500 to-green-600",
-    position: { angle: 180, distance: 180 },
+    position: { angle: 180, distance: 240 },
     missions: [
       {
         id: "bsc-phys-astro",
@@ -247,9 +247,9 @@ export const kingdoms: Kingdom[] = [
             { layerPosition: 0, description: "", icon: "" },
           ],
           matchThree: [
-            { colour: "aliceblue", icon: "Calculator" },
+            { colour: "green", icon: "Calculator" },
             { colour: "slateblue", icon: "Telescope" },
-            { colour: "yellow", icon: "Galaxy" },
+            { colour: "darkviolet", icon: "Galaxy" },
             { colour: "crimson", icon: "Formula" },
             { colour: "darkorange", icon: "Rocket" },
             { colour: "cornflowerblue", icon: "Experiment" },
@@ -273,7 +273,7 @@ export const kingdoms: Kingdom[] = [
     description: "Credentials and awards",
     icon: Crown,
     colour: "from-yellow-500 to-amber-600",
-    position: { angle: 240, distance: 180 },
+    position: { angle: 240, distance: 240 },
     missions: [
       {
         id: "aws-cloud",
@@ -315,7 +315,7 @@ export const kingdoms: Kingdom[] = [
           ],
           matchThree: [
             { colour: "darkorange", icon: "AWS" },
-            { colour: "aliceblue", icon: "Cloud" },
+            { colour: "cornflowerblue", icon: "Cloud" },
             { colour: "green", icon: "S3" },
             { colour: "crimson", icon: "IAM" },
             { colour: "dodgerblue", icon: "Dynamodb" },
@@ -332,7 +332,7 @@ export const kingdoms: Kingdom[] = [
     description: "Currently learning",
     icon: Compass,
     colour: "from-rose-500 to-pink-600",
-    position: { angle: 300, distance: 180 },
+    position: { angle: 300, distance: 240 },
     missions: [
       {
         id: "graphql",

@@ -53,14 +53,14 @@ export const PortfolioNav = () => {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ delay: 0.5, type: "spring", stiffness: 300, damping: 30 }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed left-0 top-20 z-50 w-fit transition-all duration-300 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg"
+          ? "bg-background/80 backdrop-blur-xl border border-border/50 shadow-lg"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="flex items-center justify-center h-12 gap-1 overflow-x-auto scrollbar-none">
+      <div className="max-w-4xl mx-auto px-1">
+        <div className="grid grid-cols">
           {sections.map((section) => {
             const isActive = active === section.id;
             return (

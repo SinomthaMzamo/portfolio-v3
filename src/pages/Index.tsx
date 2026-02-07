@@ -4,6 +4,7 @@ import BasicPortfolio from "@/components/basic/BasicPortfolio";
 import { ModeSelector, ViewMode } from "@/components/ModeSelector";
 import { useMemo, useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { PortfolioNav } from "@/components/basic/PortfolioNav";
 
 const pageVariants = {
   initial: { opacity: 0, scale: 0.98, filter: "blur(6px)" },
@@ -37,6 +38,8 @@ const Index = () => {
   return (
     <>
       <ModeSelector current={view} onChange={setView} />
+      {/* Keep nav OUTSIDE the motion wrapper */}
+      {view === "basic" && <PortfolioNav />}
 
       <AnimatePresence mode="wait">
         {view === "terminal" && (
@@ -74,7 +77,7 @@ const Index = () => {
             exit="exit"
             transition={pageTransition}
           >
-            <BasicPortfolio />
+            <BasicPortfolio showNav={false} />
           </motion.div>
         )}
       </AnimatePresence>

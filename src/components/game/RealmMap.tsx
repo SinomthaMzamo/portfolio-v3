@@ -51,7 +51,7 @@ export const KingdomMap = ({
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-12 md:mb-16"
+        className="text-center mb-2"
       >
         <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-glow mb-2">
           The Developer's Realm
@@ -135,7 +135,7 @@ export const KingdomMap = ({
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={onAboutClick}
-            className="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-accent bg-card/90 flex flex-col items-center justify-center glow-gold transition-all"
+            className="w-12 h-12 sm:w-36 sm:h-36 rounded-full border-2 border-accent bg-card/90 flex flex-col items-center justify-center glow-gold transition-all"
           >
             <User className="w-8 h-8 sm:w-10 sm:h-10 text-accent mb-1" />
             <span className="font-display text-xs sm:text-sm text-accent">
@@ -187,7 +187,7 @@ export const KingdomMap = ({
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={onAboutClick}
-              className="w-48 h-20 rounded-full border-2 border-accent bg-card/90 flex flex-col items-center justify-center glow-gold transition-all"
+              className="w-48 h-16 rounded-full border-2 border-accent bg-card/90 flex flex-col items-center justify-center glow-gold transition-all"
             >
               <User className="w-8 h-8 text-accent mb-1" />
               <span className="font-display text-xs text-accent">About Me</span>
@@ -218,7 +218,7 @@ export const KingdomMap = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="text-center text-muted-foreground text-sm mt-8"
+        className="text-center text-muted-foreground text-sm absolute bottom-2"
       >
         Click a kingdom to explore its missions
       </motion.p>
