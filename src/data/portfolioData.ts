@@ -290,7 +290,7 @@ Features:
           name: 'toy_robot_server.txt',
           type: 'file',
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║         TOY ROBOT - MULTIPLAYER GAME SERVER                            ║
+║         TOY ROBOT - MULTIPLAYER GAME SERVER                           ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
 🔧 Tech Stack: Python | Docker | JSON | HTTP

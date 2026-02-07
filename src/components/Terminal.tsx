@@ -46,7 +46,7 @@ export const Terminal: React.FC = () => {
   min-h-[80vh] sm:min-h-[85vh]
   max-h-[75vh] sm:max-h-[85vh]
   w-full
-  max-w-[95vw] sm:max-w-[760px]
+  max-w-[95vw] sm:max-w-[840px]
   bg-[#171716]
   crt-container crt-flicker
   rounded-2xl
