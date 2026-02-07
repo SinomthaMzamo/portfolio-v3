@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { CalculatorIcon, RotateCcw, Satellite, Sparkles, TelescopeIcon } from "lucide-react";
+import { Briefcase, CalculatorIcon, RotateCcw, Satellite, Sparkles, TelescopeIcon } from "lucide-react";
 
 import {
   SiReact,
@@ -23,10 +23,13 @@ import {
   SiPostgresql,
   SiAngular,
   SiNetflix,
+  SiGooglegemini,
 } from "react-icons/si";
 
 import { GiSoapExperiment, GiStarSwirl } from "react-icons/gi";
 import { TbJson } from "react-icons/tb";
+import { LuBrainCircuit, LuFileBadge, LuLayoutDashboard } from "react-icons/lu";
+
 
 
 
@@ -59,11 +62,22 @@ import {
   FaShopify,
   FaFacebookSquare,
   FaGithub,
+  FaMicrophone,
+  FaPython,
+  FaBriefcase,
+  FaCode,
+  FaMailBulk,
+  FaEdit,
+  FaCloudUploadAlt,
 } from "react-icons/fa";
 
 import type { IconType } from "react-icons";
 import { IoTelescopeSharp, IoLogoAngular } from "react-icons/io5";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { GiSouthAfrica } from "react-icons/gi";
+import { PiCubeDuotone } from "react-icons/pi";
+
+
 
 
 
@@ -124,6 +138,19 @@ export const techIcons: Record<string, IconType> = {
   Netflix: SiNetflix,
   Twitter: FaSquareXTwitter,
   GitHub: FaGithub,
+  AI: LuBrainCircuit,
+  Voice: FaMicrophone,
+  Python: FaPython,
+  Gemini: SiGooglegemini,
+  Briefcase: FaBriefcase,
+  RSA: GiSouthAfrica,
+  Code: FaCode,
+  Cursor: PiCubeDuotone,
+  Mail: FaMailBulk,
+  Cert: LuFileBadge,
+  Editing: FaEdit,
+  Dashboard: LuLayoutDashboard,
+  Upload: FaCloudUploadAlt,
 };
 
 
