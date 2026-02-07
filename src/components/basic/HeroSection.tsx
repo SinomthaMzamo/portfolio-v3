@@ -4,7 +4,10 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section id="hero" className="min-h-screen flex flex-col items-center justify-center px-6 relative pt-12">
+    <section
+      id="hero"
+      className="min-h-screen flex flex-col items-center justify-center px-6 relative pt-12"
+    >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -15,9 +18,16 @@ export const HeroSection = () => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="w-20 h-20 mx-auto mb-8 rounded-full bg-primary/20 border-2 border-primary/40 flex items-center justify-center"
+          className="w-[120px] h-[120px] 
+          sm:w-[200px] sm:h-[200px]
+          mx-auto mb-8 rounded-full bg-primary/20 border-2 border-primary/40 flex items-center justify-center"
         >
-          <span className="text-3xl font-bold text-primary">SM</span>
+          {/* <span className="text-3xl font-bold text-primary">SM</span> */}
+          <div
+            className="
+          w-full h-full 
+          rounded-full bg-[url('/avatar-arcade.png')] bg-cover bg-center"
+          ></div>
         </motion.div>
 
         <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">

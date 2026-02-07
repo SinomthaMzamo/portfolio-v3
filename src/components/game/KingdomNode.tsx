@@ -89,7 +89,7 @@ export const KingdomNode = ({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
         className={`
-          absolute -bottom-8 sm:-bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap
+          absolute -bottom-8 sm:-bottom-10 left-0 right-0 mx-auto w-fit whitespace-nowrap
           px-2 py-1 rounded bg-card border border-border text-xs sm:text-sm font-display
           ${isComplete ? "text-accent" : "text-foreground"}
         `}

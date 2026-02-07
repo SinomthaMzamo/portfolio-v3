@@ -54,7 +54,7 @@ export const KingdomMap = ({
         className="text-center mb-2"
       >
         <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-glow mb-2">
-          The Developer's Realm
+          Sinomtha's Dev Odyssey
         </h1>
         <p className="text-muted-foreground">
           Explore kingdoms and complete missions to unlock achievements

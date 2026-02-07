@@ -53,7 +53,7 @@ export const PortfolioNav = () => {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ delay: 0.5, type: "spring", stiffness: 300, damping: 30 }}
-      className={`fixed left-0 top-20 z-50 w-fit transition-all duration-300 ${
+      className={`fixed left-0 top-0 z-50 w-fit transition-all duration-300 ${
         scrolled
           ? "bg-background/80 backdrop-blur-xl border border-border/50 shadow-lg"
           : "bg-transparent"
