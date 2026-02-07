@@ -41,6 +41,63 @@ export const kingdoms: Kingdom[] = [
     position: { angle: 0, distance: 240 },
     missions: [
       {
+        id: "full-stack-dev",
+        title: "Student Accommodation Management Platform",
+        description:
+          "Designed and developed a comprehensive booking and property management system for a student accommodation company seeking to retain residents efficiently.",
+        details: [
+          "Conducted requirements gathering sessions and translated business needs into technical specifications",
+          "Delivered iterative prototypes with Figma mockups for stakeholder approval",
+          "Provided technical documentation and admin training for seamless system handoff",
+          "Built responsive React-based booking platform using Vite, React Hook Form, and Zod for robust form validation",
+          "Implemented real-time administrative dashboard with property analytics, occupancy tracking, tenant directory, and broadcast messaging capabilities",
+          "Integrated Supabase for authentication, PostgreSQL database management, and secure file storage for tenant documents",
+          "Used ReactQuery for efficient server state management and optimistic UI updates",
+          "Reduced booking processing time from 48 hours to under 5 minutes through digital automation",
+          "Created an admin-facing dashboard to visualise applications and student data, improving real-time visibility and reducing manual tracking.",
+          "Created exportable analytics and reporting features for financial reconciliation and capacity planning",
+        ],
+        date: "Aug 20254 - Present",
+        technologies: ["React", "Tailwind CSS", "Zod", "Supabase"],
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "AGILE",
+              hint: "Iterative way of building software with quick feedback cycles (Scrum/Kanban)",
+            },
+            {
+              word: "FIGMA",
+              hint: "Popular collaborative UI/UX design and prototyping tool",
+            },
+            {
+              word: "ANGULAR",
+              hint: "TypeScript-based front-end framework maintained by Google",
+            },
+            {
+              word: "AWS",
+              hint: "Amazon’s cloud platform for hosting, storage, databases, and more",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "refrigerant readings", icon: "" },
+            { layerPosition: 1, description: "database", icon: "" },
+            { layerPosition: 2, description: "monitoring dashboard", icon: "" },
+          ],
+          matchThree: [
+            { colour: "cornflowerblue", icon: "TypeScript" },
+            { colour: "darksalmon", icon: "Figma" },
+            { colour: "blue", icon: "Docker" },
+            { colour: "crimson", icon: "Angular" },
+            { colour: "green", icon: "Node" },
+            { colour: "dodgerblue", icon: "Cloud" },
+          ],
+          memoryMatch: ["React", "TypeScript", "Sprint", "QA", "SDK", "API"],
+        },
+        targetScore: 1000,
+      },
+      {
         id: "debt-mgmt",
         title: "Bhala Edolweni - Debtor Management",
         description:
@@ -402,7 +459,7 @@ export const kingdoms: Kingdom[] = [
           "PostgreSQL",
           "Bootstrap",
           "HTML",
-          "CSS"
+          "CSS",
         ],
         links: [{ label: "View Project", url: "#" }],
         date: "2025",
@@ -494,7 +551,108 @@ export const kingdoms: Kingdom[] = [
         },
         targetScore: 1000,
       },
-      
+      {
+        id: "coding-exp-trainer",
+        title: "Coding Expert",
+        description: "Outlier.ai - Freelance AI Trainer",
+        details: [
+          "Reviewed and optimized AI-generated code in JavaScript, Python, Java, and TypeScript for accuracy, clarity, and efficiency, ensuring high-quality deliverables under tight deadlines",
+          "Delivered detailed, actionable feedback on AI outputs to improve correctness, tone, and alignment with project guidelines.",
+          "Completed over 100 coding tasks in one month, generating more than R25,000 in earnings, reflecting high-quality, consistent work within tight deadlines.",
+          "Designed coding challenges and structured solutions to strengthen AI reasoning and problem-solving.",
+          "Applied annotation guidelines consistently, resolving ambiguous edge cases with sound judgment.",
+          "•Gained practical experience with Reinforcement Learning with Human Feedback (RLHF) workflows and structured annotation.",
+        ],
+        date: "Aug 2024 - Present",
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "AGILE",
+              hint: "Iterative way of building software with quick feedback cycles (Scrum/Kanban)",
+            },
+            {
+              word: "FIGMA",
+              hint: "Popular collaborative UI/UX design and prototyping tool",
+            },
+            {
+              word: "ANGULAR",
+              hint: "TypeScript-based front-end framework maintained by Google",
+            },
+            {
+              word: "AWS",
+              hint: "Amazon’s cloud platform for hosting, storage, databases, and more",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "refrigerant readings", icon: "" },
+            { layerPosition: 1, description: "database", icon: "" },
+            { layerPosition: 2, description: "monitoring dashboard", icon: "" },
+          ],
+          matchThree: [
+            { colour: "cornflowerblue", icon: "TypeScript" },
+            { colour: "darksalmon", icon: "Figma" },
+            { colour: "blue", icon: "Docker" },
+            { colour: "crimson", icon: "Angular" },
+            { colour: "green", icon: "Node" },
+            { colour: "dodgerblue", icon: "Cloud" },
+          ],
+          memoryMatch: ["React", "TypeScript", "Sprint", "QA", "SDK", "API"],
+        },
+        targetScore: 1000,
+      },
+      {
+        id: "data-sci-intern",
+        title: "Data Science Intern",
+        description:
+          "CodSoft - A structured internship focused on applying data science principles through hands-on machine learning projects",
+        details: [
+          "Built predictive and classification models using Python, Pandas, NumPy, and Scikit-learn on datasets such as Titanic Survival Prediction, Movie Rating Prediction, and Iris Flower Classification.",
+          "Applied data preprocessing, feature engineering, and model evaluation techniques to improve prediction accuracy and interpret results.",
+          "Developed practical understanding of regression and classification algorithms, including Logistic Regression, Decision Trees, and Random Forests.",
+          "Strengthened data visualization and reporting skills using Matplotlib and Seaborn for clear result communication.",
+          "Gained hands-on exposure to sales forecasting and fraud detection through additional applied projects, deepening understanding of real-world data-driven decision making.",
+        ],
+        date: "Apr 2024 - Present",
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "AGILE",
+              hint: "Iterative way of building software with quick feedback cycles (Scrum/Kanban)",
+            },
+            {
+              word: "FIGMA",
+              hint: "Popular collaborative UI/UX design and prototyping tool",
+            },
+            {
+              word: "ANGULAR",
+              hint: "TypeScript-based front-end framework maintained by Google",
+            },
+            {
+              word: "AWS",
+              hint: "Amazon’s cloud platform for hosting, storage, databases, and more",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "refrigerant readings", icon: "" },
+            { layerPosition: 1, description: "database", icon: "" },
+            { layerPosition: 2, description: "monitoring dashboard", icon: "" },
+          ],
+          matchThree: [
+            { colour: "cornflowerblue", icon: "TypeScript" },
+            { colour: "darksalmon", icon: "Figma" },
+            { colour: "blue", icon: "Docker" },
+            { colour: "crimson", icon: "Angular" },
+            { colour: "green", icon: "Node" },
+            { colour: "dodgerblue", icon: "Cloud" },
+          ],
+          memoryMatch: ["React", "TypeScript", "Sprint", "QA", "SDK", "API"],
+        },
+        targetScore: 1000,
+      },
     ],
   },
   {
@@ -555,6 +713,299 @@ export const kingdoms: Kingdom[] = [
         },
         targetScore: 1000,
       },
+      {
+        id: "frontend-web",
+        title: "Frontend | Web Development",
+        description: "Frontend technologies, frameworks and integrations",
+        details: [
+          "Angular",
+          "React",
+          "Redux",
+          "HTML",
+          "CSS",
+          "TypeScript",
+          "JavaScript",
+          "Tailwind CSS",
+          "SCSS",
+          "Bootstrap",
+        ],
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "DIV",
+              hint: "Iterative way of building software with quick feedback cycles (Scrum/Kanban)",
+            },
+            {
+              word: "TAG",
+              hint: "Instructions written in a programming language to build software",
+            },
+            {
+              word: "CONST",
+              hint: "A computer or system that provides data or services to other computers",
+            },
+            {
+              word: "CURLY",
+              hint: "A set of rules that allows different software systems to communicate",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 1, description: "", icon: "" },
+            { layerPosition: 2, description: "", icon: "" },
+          ],
+          matchThree: [
+            { colour: "mediumpurple", icon: "Server" },
+            { colour: "green", icon: "Node" },
+            { colour: "crimson", icon: "JSON" },
+            { colour: "cornflowerblue", icon: "PGSQL" },
+            { colour: "darkorange", icon: "Java" },
+          ],
+          memoryMatch: ["Node", "Java", "System", "SQL", "REST", "GraphQL"],
+        },
+        targetScore: 1000,
+      },
+      {
+        id: "ux-ui-design",
+        title: "UX/UI design",
+        description: "UX/UI Design technologies, tools and integrations",
+        details: [
+          "Figma",
+          "Miro",
+          "Prototyping",
+          "Wireframing",
+          "Gamification",
+        ],
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "DIV",
+              hint: "Iterative way of building software with quick feedback cycles (Scrum/Kanban)",
+            },
+            {
+              word: "TAG",
+              hint: "Instructions written in a programming language to build software",
+            },
+            {
+              word: "CONST",
+              hint: "A computer or system that provides data or services to other computers",
+            },
+            {
+              word: "CURLY",
+              hint: "A set of rules that allows different software systems to communicate",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 1, description: "", icon: "" },
+            { layerPosition: 2, description: "", icon: "" },
+          ],
+          matchThree: [
+            { colour: "mediumpurple", icon: "Server" },
+            { colour: "green", icon: "Node" },
+            { colour: "crimson", icon: "JSON" },
+            { colour: "cornflowerblue", icon: "PGSQL" },
+            { colour: "darkorange", icon: "Java" },
+          ],
+          memoryMatch: ["Node", "Java", "System", "SQL", "REST", "GraphQL"],
+        },
+        targetScore: 1000,
+      },
+      {
+        id: "programming",
+        title: "Programming Languages",
+        description: "Functional and OOP Languages",
+        details: ["C#", "Java", "Python", "TypeScript", "JavaScript", "Kotlin"],
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "DIV",
+              hint: "Iterative way of building software with quick feedback cycles (Scrum/Kanban)",
+            },
+            {
+              word: "TAG",
+              hint: "Instructions written in a programming language to build software",
+            },
+            {
+              word: "CONST",
+              hint: "A computer or system that provides data or services to other computers",
+            },
+            {
+              word: "CURLY",
+              hint: "A set of rules that allows different software systems to communicate",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 1, description: "", icon: "" },
+            { layerPosition: 2, description: "", icon: "" },
+          ],
+          matchThree: [
+            { colour: "mediumpurple", icon: "Server" },
+            { colour: "green", icon: "Node" },
+            { colour: "crimson", icon: "JSON" },
+            { colour: "cornflowerblue", icon: "PGSQL" },
+            { colour: "darkorange", icon: "Java" },
+          ],
+          memoryMatch: ["Node", "Java", "System", "SQL", "REST", "GraphQL"],
+        },
+        targetScore: 1000,
+      },
+      {
+        id: "ai-modern-tools",
+        title: "AI & Modern Tooling",
+        description: "Artificial Intelligence and Machine Learning",
+        details: [
+          "Cursor",
+          "RLHF Workflows",
+          "AI code review",
+          "Code optimisation",
+        ],
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "DIV",
+              hint: "Iterative way of building software with quick feedback cycles (Scrum/Kanban)",
+            },
+            {
+              word: "TAG",
+              hint: "Instructions written in a programming language to build software",
+            },
+            {
+              word: "CONST",
+              hint: "A computer or system that provides data or services to other computers",
+            },
+            {
+              word: "CURLY",
+              hint: "A set of rules that allows different software systems to communicate",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 1, description: "", icon: "" },
+            { layerPosition: 2, description: "", icon: "" },
+          ],
+          matchThree: [
+            { colour: "mediumpurple", icon: "Server" },
+            { colour: "green", icon: "Node" },
+            { colour: "crimson", icon: "JSON" },
+            { colour: "cornflowerblue", icon: "PGSQL" },
+            { colour: "darkorange", icon: "Java" },
+          ],
+          memoryMatch: ["Node", "Java", "System", "SQL", "REST", "GraphQL"],
+        },
+        targetScore: 1000,
+      },
+      {
+        id: "aws-cloud-comp",
+        title: "Cloud Computing with AWS",
+        description: "Artificial Intelligence and Machine Learning",
+        details: [
+          "Lambda",
+          "ECS",
+          "EC2",
+          "Elastic Beanstalk",
+          "S3",
+          "Cognito",
+          "CloudFormation",
+          "API Gateway",
+          "SES",
+          "RDS",
+        ],
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "DIV",
+              hint: "Iterative way of building software with quick feedback cycles (Scrum/Kanban)",
+            },
+            {
+              word: "TAG",
+              hint: "Instructions written in a programming language to build software",
+            },
+            {
+              word: "CONST",
+              hint: "A computer or system that provides data or services to other computers",
+            },
+            {
+              word: "CURLY",
+              hint: "A set of rules that allows different software systems to communicate",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 1, description: "", icon: "" },
+            { layerPosition: 2, description: "", icon: "" },
+          ],
+          matchThree: [
+            { colour: "mediumpurple", icon: "Server" },
+            { colour: "green", icon: "Node" },
+            { colour: "crimson", icon: "JSON" },
+            { colour: "cornflowerblue", icon: "PGSQL" },
+            { colour: "darkorange", icon: "Java" },
+          ],
+          memoryMatch: ["Node", "Java", "System", "SQL", "REST", "GraphQL"],
+        },
+        targetScore: 1000,
+      },
+      {
+        id: "proj-man-collab",
+        title: "Project Management & Collaboration",
+        description: "Artificial Intelligence and Machine Learning",
+        details: [
+          "Jira",
+          "Kanban",
+          "Confluence",
+          "Miro",
+          "Agile methodologies & ceremonies",
+          "Baclog Refinement",
+          "Flow Metrics",
+        ],
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "DIV",
+              hint: "Iterative way of building software with quick feedback cycles (Scrum/Kanban)",
+            },
+            {
+              word: "TAG",
+              hint: "Instructions written in a programming language to build software",
+            },
+            {
+              word: "CONST",
+              hint: "A computer or system that provides data or services to other computers",
+            },
+            {
+              word: "CURLY",
+              hint: "A set of rules that allows different software systems to communicate",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 1, description: "", icon: "" },
+            { layerPosition: 2, description: "", icon: "" },
+          ],
+          matchThree: [
+            { colour: "mediumpurple", icon: "Server" },
+            { colour: "green", icon: "Node" },
+            { colour: "crimson", icon: "JSON" },
+            { colour: "cornflowerblue", icon: "PGSQL" },
+            { colour: "darkorange", icon: "Java" },
+          ],
+          memoryMatch: ["Node", "Java", "System", "SQL", "REST", "GraphQL"],
+        },
+        targetScore: 1000,
+      },
     ],
   },
   {
@@ -566,9 +1017,119 @@ export const kingdoms: Kingdom[] = [
     position: { angle: 180, distance: 240 },
     missions: [
       {
+        id: "software-eng",
+        title: "Systems Development NQF 5",
+        description: "WeThinkCode_",
+        details: [
+          "Focus on algorithms and data structures",
+          "Software engineering principles",
+          "Database systems and design",
+        ],
+        date: "2019 - 2022",
+        unlocked: false,
+        gameType: "crossword",
+        gameData: {
+          crossword: [
+            {
+              word: "STAR",
+              hint: "A massive glowing sphere of plasma powered by nuclear fusion",
+            },
+            {
+              word: "BLOEM",
+              hint: "Nickname for Bloemfontein, the 'City of Roses', also known for its birdlife",
+            },
+            {
+              word: "CALCULUS",
+              hint: "Mathematics used to study change, motion, and rates in physics",
+            },
+            {
+              word: "UNIVERSE",
+              hint: "Everything that exists: space, time, matter, and energy",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 0, description: "", icon: "" },
+          ],
+          matchThree: [
+            { colour: "green", icon: "Calculator" },
+            { colour: "slateblue", icon: "Telescope" },
+            { colour: "darkviolet", icon: "Galaxy" },
+            { colour: "crimson", icon: "Formula" },
+            { colour: "darkorange", icon: "Rocket" },
+            { colour: "cornflowerblue", icon: "Experiment" },
+          ],
+          memoryMatch: [
+            "Rocket",
+            "Telescope",
+            "Experiment",
+            "Galaxy",
+            "Satellite",
+            "GraphQL",
+          ],
+        },
+        targetScore: 1000,
+      },
+      {
         id: "bsc-phys-astro",
         title: "BSc Physics & Astrophysics",
         description: "University of the Free State",
+        details: [
+          "Focus on algorithms and data structures",
+          "Software engineering principles",
+          "Database systems and design",
+        ],
+        date: "2019 - 2022",
+        unlocked: false,
+        gameType: "crossword",
+        gameData: {
+          crossword: [
+            {
+              word: "STAR",
+              hint: "A massive glowing sphere of plasma powered by nuclear fusion",
+            },
+            {
+              word: "BLOEM",
+              hint: "Nickname for Bloemfontein, the 'City of Roses', also known for its birdlife",
+            },
+            {
+              word: "CALCULUS",
+              hint: "Mathematics used to study change, motion, and rates in physics",
+            },
+            {
+              word: "UNIVERSE",
+              hint: "Everything that exists: space, time, matter, and energy",
+            },
+          ],
+          architectureLayers: [
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 0, description: "", icon: "" },
+          ],
+          matchThree: [
+            { colour: "green", icon: "Calculator" },
+            { colour: "slateblue", icon: "Telescope" },
+            { colour: "darkviolet", icon: "Galaxy" },
+            { colour: "crimson", icon: "Formula" },
+            { colour: "darkorange", icon: "Rocket" },
+            { colour: "cornflowerblue", icon: "Experiment" },
+          ],
+          memoryMatch: [
+            "Rocket",
+            "Telescope",
+            "Experiment",
+            "Galaxy",
+            "Satellite",
+            "GraphQL",
+          ],
+        },
+        targetScore: 1000,
+      },
+      {
+        id: "nsc-wghs",
+        title: "National Senior Certificate",
+        description: "Wynberg Girls' High School",
         details: [
           "Focus on algorithms and data structures",
           "Software engineering principles",
@@ -634,6 +1195,104 @@ export const kingdoms: Kingdom[] = [
         id: "aws-cloud",
         title: "AWS Certified Cloud Practitioner",
         description: "Amazon Web Services certification",
+        details: [
+          "Cloud concepts and AWS core services",
+          "Security and compliance",
+          "Billing and pricing models",
+        ],
+        date: "2024",
+        links: [{ label: "View Credential", url: "#" }],
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "DEPLOY",
+              hint: "To release an application or service into a live environment",
+            },
+            {
+              word: "USERS",
+              hint: "People or identities that access AWS resources through IAM",
+            },
+            {
+              word: "CLOUD",
+              hint: "On-demand computing resources delivered over the internet",
+            },
+            {
+              word: "AWS",
+              hint: "Amazon Web Services, a major provider of cloud computing services",
+            },
+          ],
+
+          architectureLayers: [
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 0, description: "", icon: "" },
+          ],
+          matchThree: [
+            { colour: "darkorange", icon: "AWS" },
+            { colour: "cornflowerblue", icon: "Cloud" },
+            { colour: "green", icon: "S3" },
+            { colour: "crimson", icon: "IAM" },
+            { colour: "dodgerblue", icon: "Dynamodb" },
+          ],
+          memoryMatch: ["AWS", "Cloud", "S3", "EC2", "Lambda", "IAM"],
+        },
+        targetScore: 1000,
+      },
+      {
+        id: "ibm-ux",
+        title: "User Experience Design Fundamentals",
+        description: "Amazon Web Services certification",
+        details: [
+          "Cloud concepts and AWS core services",
+          "Security and compliance",
+          "Billing and pricing models",
+        ],
+        date: "2024",
+        links: [{ label: "View Credential", url: "#" }],
+        unlocked: false,
+        gameType: "memory",
+        gameData: {
+          crossword: [
+            {
+              word: "DEPLOY",
+              hint: "To release an application or service into a live environment",
+            },
+            {
+              word: "USERS",
+              hint: "People or identities that access AWS resources through IAM",
+            },
+            {
+              word: "CLOUD",
+              hint: "On-demand computing resources delivered over the internet",
+            },
+            {
+              word: "AWS",
+              hint: "Amazon Web Services, a major provider of cloud computing services",
+            },
+          ],
+
+          architectureLayers: [
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 0, description: "", icon: "" },
+            { layerPosition: 0, description: "", icon: "" },
+          ],
+          matchThree: [
+            { colour: "darkorange", icon: "AWS" },
+            { colour: "cornflowerblue", icon: "Cloud" },
+            { colour: "green", icon: "S3" },
+            { colour: "crimson", icon: "IAM" },
+            { colour: "dodgerblue", icon: "Dynamodb" },
+          ],
+          memoryMatch: ["AWS", "Cloud", "S3", "EC2", "Lambda", "IAM"],
+        },
+        targetScore: 1000,
+      },
+      {
+        id: "ibm-proj-man",
+        title: "Project Management Fundamentals",
+        description: "IBM SkillsBuild Certification",
         details: [
           "Cloud concepts and AWS core services",
           "Security and compliance",
