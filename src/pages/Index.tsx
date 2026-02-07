@@ -41,6 +41,13 @@ const Index = () => {
       {/* Keep nav OUTSIDE the motion wrapper */}
       {view === "basic" && <PortfolioNav />}
 
+      {/* ✅ Mobile hint fixed to SCREEN (only on terminal view) */}
+      {view === "terminal" && (
+        <div className="fixed bottom-2 left-2 right-2 md:hidden z-[9999] text-center text-[10px] text-muted-foreground terminal-glow-subtle bg-background/80 py-1 rounded pointer-events-none">
+          Tap to type • Type 'help' for commands
+        </div>
+      )}
+
       <AnimatePresence mode="wait">
         {view === "terminal" && (
           <motion.div

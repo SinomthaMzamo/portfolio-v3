@@ -42,8 +42,8 @@ export const Terminal: React.FC = () => {
 
   return (
     <div
-      className="mx-auto my-20
-  min-h-[75vh] sm:min-h-[85vh]
+      className="mx-auto my-16
+  min-h-[80vh] sm:min-h-[85vh]
   max-h-[75vh] sm:max-h-[85vh]
   w-full
   max-w-[95vw] sm:max-w-[760px]
@@ -51,7 +51,8 @@ export const Terminal: React.FC = () => {
   crt-container crt-flicker
   rounded-2xl
   border border-green-400/50
-  shadow-[0_0_20px_rgba(57,255,20,0.85)]"
+  shadow-[0_0_20px_rgba(57,255,20,0.85)]
+  flex flex-col"
     >
       {/* Terminal Header */}
       <div className="sticky top-0 z-20 bg-secondary/90 backdrop-blur-sm border-b border-border px-4 py-2 flex items-center gap-2">
@@ -68,7 +69,7 @@ export const Terminal: React.FC = () => {
       {/* Terminal Content */}
       <div
         ref={terminalRef}
-        className="p-3 md:p-6 h-[calc(100vh-48px)] overflow-y-auto overflow-x-hidden cursor-text"
+        className="p-3 md:p-6 flex-1 overflow-y-auto overflow-x-hidden cursor-text overscroll-contain"
         onClick={handleTerminalClick}
       >
         <div className="max-w-4xl mx-auto font-mono text-xs sm:text-sm md:text-base">
@@ -88,9 +89,9 @@ export const Terminal: React.FC = () => {
       </div>
 
       {/* Mobile hint */}
-      <div className="fixed bottom-2 left-2 right-2 md:hidden text-center text-[10px] text-muted-foreground terminal-glow-subtle bg-background/80 py-1 rounded">
+      {/* <div className="fixed bottom-2 left-2 right-2 md:hidden text-center text-[10px] text-muted-foreground terminal-glow-subtle bg-background/80 py-1 rounded">
         Tap to type • Type 'help' for commands
-      </div>
+      </div> */}
     </div>
   );
 };
