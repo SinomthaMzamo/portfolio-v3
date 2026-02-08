@@ -5,6 +5,7 @@ import { ModeSelector, ViewMode } from "@/components/ModeSelector";
 import { useMemo, useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { PortfolioNav } from "@/components/basic/PortfolioNav";
+import { NavbarGlowingPillV2 } from "@/components/basic/Nav";
 
 const pageVariants = {
   initial: { opacity: 0, scale: 0.98, filter: "blur(6px)" },
@@ -39,7 +40,7 @@ const Index = () => {
     <>
       <ModeSelector current={view} onChange={setView} />
       {/* Keep nav OUTSIDE the motion wrapper */}
-      {view === "basic" && <PortfolioNav />}
+      {view === "basic" && <NavbarGlowingPillV2 />}
 
       {/* ✅ Mobile hint fixed to SCREEN (only on terminal view) */}
       {view === "terminal" && (

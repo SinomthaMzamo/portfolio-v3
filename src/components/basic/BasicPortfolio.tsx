@@ -7,6 +7,7 @@ import { CertificationsSection } from "./CertificationsSection";
 import { ExploringSection } from "./ExploringSection";
 import { ContactSection } from "./ContactSection";
 import { PortfolioNav } from "./PortfolioNav";
+import { NavbarGlowingPillV2} from "./Nav";
 
 type BasicPortfolioProps = {
   showNav?: boolean;
@@ -16,7 +17,7 @@ const BasicPortfolio = ({ showNav = true }: BasicPortfolioProps) => {
   return (
     <div className="min-h-screen bg-background text-foreground relative">
       {/* Only show nav if allowed */}
-      {showNav && <PortfolioNav />}
+      {showNav && <NavbarGlowingPillV2 />}
 
       {/* Subtle animated background */}
       <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
