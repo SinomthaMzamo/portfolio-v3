@@ -140,7 +140,7 @@ export const TerminalInput: React.FC<TerminalInputProps> = ({
             value={input}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
-            className="w-full bg-transparent text-foreground terminal-glow-subtle outline-none font-mono caret-primary"
+            className="w-full bg-transparent text-primary terminal-glow-subtle outline-none font-mono caret-primary"
             spellCheck={false}
             autoComplete="off"
             autoCapitalize="off"
@@ -169,7 +169,7 @@ export const TerminalInput: React.FC<TerminalInputProps> = ({
                 className={`px-2 py-1 text-sm ${
                   index === selectedSuggestion
                     ? 'bg-primary text-primary-foreground'
-                    : 'text-foreground'
+                    : 'text-primary'
                 }`}
               >
                 {suggestion}

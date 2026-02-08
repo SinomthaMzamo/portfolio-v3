@@ -50,8 +50,8 @@ export const Terminal: React.FC = () => {
   bg-[#171716]
   crt-container crt-flicker
   rounded-2xl
-  border border-green-400/50
-  shadow-[0_0_20px_rgba(57,255,20,0.85)]
+  border border-terminal-glow-subtle
+  shadow-[0_4px_30px_hsl(var(--primary)_/_0.4)]
   flex flex-col"
     >
       {/* Terminal Header */}
