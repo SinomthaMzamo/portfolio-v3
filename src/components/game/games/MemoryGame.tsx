@@ -158,6 +158,7 @@ interface MemoryGameProps {
   pairs: string[];
   onComplete: () => void;
   onClose: () => void;
+  moveLimit?: number;
 }
 
 interface Card {
@@ -210,12 +211,16 @@ export const MemoryGame = ({
   pairs = [],
   onComplete,
   onClose,
+  moveLimit,
 }: MemoryGameProps) => {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const [isGameOver, setIsGameOver] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+
+  const maxMoves = moveLimit ?? (pairs.length * 3);
 
   const initializeGame = () => {
     if (!pairs || pairs.length === 0) return;
@@ -228,6 +233,7 @@ export const MemoryGame = ({
     setFlippedCards([]);
     setMoves(0);
     setIsComplete(false);
+    setIsGameOver(false);
   };
 
   useEffect(() => {
@@ -235,7 +241,7 @@ export const MemoryGame = ({
   }, [pairs]);
 
   const handleCardClick = (cardId: number) => {
-    if (isProcessing) return;
+    if (isProcessing || isComplete || isGameOver) return;
     if (flippedCards.length === 2) return;
     if (cards.find((c) => c.id === cardId)?.isMatched) return;
     if (flippedCards.includes(cardId)) return;
@@ -284,8 +290,10 @@ export const MemoryGame = ({
     if (cards.length > 0 && cards.every((c) => c.isMatched)) {
       setIsComplete(true);
       setTimeout(onComplete, 1500);
+    } else if (cards.length > 0 && moves >= maxMoves && !cards.every((c) => c.isMatched)) {
+      setIsGameOver(true);
     }
-  }, [cards, onComplete]);
+  }, [cards, onComplete, moves, maxMoves]);
 
   if (!pairs || pairs.length === 0) {
     return (
@@ -299,7 +307,7 @@ export const MemoryGame = ({
     <div className="p-4 sm:p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
-          <span className="text-muted-foreground text-sm">Moves: {moves}</span>
+          <span className="text-muted-foreground text-sm">Moves: {moves}/{maxMoves}</span>
           <Button
             variant="ghost"
             size="sm"
@@ -310,6 +318,14 @@ export const MemoryGame = ({
             Reset
           </Button>
         </div>
+      </div>
+
+      {/* Move progress bar */}
+      <div className="h-1.5 bg-secondary rounded-full mb-4 overflow-hidden">
+        <motion.div
+          className={`h-full rounded-full transition-colors ${moves / maxMoves > 0.8 ? "bg-destructive" : "bg-primary"}`}
+          animate={{ width: `${Math.min((moves / maxMoves) * 100, 100)}%` }}
+        />
       </div>
 
       <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
@@ -377,6 +393,24 @@ export const MemoryGame = ({
           <p className="text-muted-foreground text-sm mt-2">
             Completed in {moves} moves
           </p>
+        </motion.div>
+      )}
+
+      {isGameOver && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mt-6 text-center"
+        >
+          <p className="text-destructive font-semibold mb-2">Out of moves!</p>
+          <div className="flex gap-2 justify-center">
+            <Button variant="outline" onClick={initializeGame}>
+              Try Again
+            </Button>
+            <Button variant="ghost" onClick={onClose}>
+              Close
+            </Button>
+          </div>
         </motion.div>
       )}
     </div>

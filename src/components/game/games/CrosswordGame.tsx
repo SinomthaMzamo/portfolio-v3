@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { RotateCcw, Sparkles, Check, X } from "lucide-react";
+import { RotateCcw, Sparkles, Check, X, Lightbulb } from "lucide-react";
 
 interface CrosswordGameProps {
-  wordsAndClues: {word:string;hint:string;}[];
+  wordsAndClues: { word: string; hint: string }[];
   onComplete: () => void;
   onClose: () => void;
 }
@@ -17,30 +17,7 @@ interface WordClue {
   isCorrect: boolean | null;
 }
 
-const clueMap: Record<string, string> = {
-  REACT: "Facebook's JavaScript library for building UIs",
-  VOICE: "Type of assistant or coach using speech",
-  AI: "Artificial _____ (machine learning)",
-  COACH: "Mentor or trainer",
-  BANK: "Financial institution",
-  JAVA: "Coffee-named programming language",
-  API: "Application Programming Interface",
-  SECURE: "Safe and protected",
-  AWS: "Amazon's cloud platform (abbr.)",
-  DOCKER: "Container platform with whale logo",
-  CICD: "Continuous Integration/Deployment (abbr.)",
-  DEPLOY: "Release code to production",
-  BSC: "Bachelor of Science (abbr.)",
-  CODE: "Write programs",
-  UCT: "University of Cape Town (abbr.)",
-  ALGO: "Algorithm (abbr.)",
-  WEB3: "Decentralized internet era",
-  ETH: "Ethereum (abbr.)",
-  DEFI: "Decentralized Finance (abbr.)",
-  CHAIN: "Block_____ technology",
-  TRAIN: "Teach a machine learning model",
-  MODEL: "AI/ML trained system",
-};
+const MAX_HINTS = 3;
 
 export const CrosswordGame = ({
   wordsAndClues = [],
@@ -50,6 +27,7 @@ export const CrosswordGame = ({
   const [wordClues, setWordClues] = useState<WordClue[]>([]);
   const [isComplete, setIsComplete] = useState(false);
   const [attempts, setAttempts] = useState(0);
+  const [hintsUsed, setHintsUsed] = useState(0);
 
   useEffect(() => {
     if (!wordsAndClues || wordsAndClues.length === 0) return;
@@ -57,9 +35,7 @@ export const CrosswordGame = ({
     setWordClues(
       wordsAndClues.map((word) => ({
         word: word.word.toUpperCase(),
-        clue:
-          word.hint ||
-          `Tech term with ${word.word.length} letters`,
+        clue: word.hint || `Tech term with ${word.word.length} letters`,
         userInput: "",
         isCorrect: null,
       })),
@@ -85,11 +61,43 @@ export const CrosswordGame = ({
     );
   };
 
+  const useHint = (index: number) => {
+    if (hintsUsed >= MAX_HINTS) return;
+    const wc = wordClues[index];
+    if (wc.isCorrect === true) return;
+
+    // Reveal the first unrevealed letter
+    const currentInput = wc.userInput.split("");
+    let revealed = false;
+    for (let i = 0; i < wc.word.length; i++) {
+      if (currentInput[i] !== wc.word[i]) {
+        currentInput[i] = wc.word[i];
+        revealed = true;
+        break;
+      }
+    }
+
+    if (revealed) {
+      setHintsUsed((h) => h + 1);
+      const newInput = currentInput.join("");
+      handleInputChange(index, newInput);
+      // Auto-check if fully filled
+      if (newInput.length === wc.word.length && newInput === wc.word) {
+        setWordClues((prev) =>
+          prev.map((w, i) =>
+            i === index ? { ...w, userInput: newInput, isCorrect: true } : w,
+          ),
+        );
+      }
+    }
+  };
+
   const resetGame = () => {
     setWordClues((prev) =>
       prev.map((wc) => ({ ...wc, userInput: "", isCorrect: null })),
     );
     setAttempts(0);
+    setHintsUsed(0);
     setIsComplete(false);
   };
 
@@ -114,9 +122,15 @@ export const CrosswordGame = ({
   return (
     <div className="p-4 sm:p-6">
       <div className="flex items-center justify-between mb-6">
-        <span className="text-muted-foreground text-sm">
-          Attempts: {attempts}
-        </span>
+        <div className="flex items-center gap-3">
+          <span className="text-muted-foreground text-sm">
+            Attempts: {attempts}
+          </span>
+          <span className="flex items-center gap-1 text-sm text-muted-foreground">
+            <Lightbulb className="w-3.5 h-3.5" />
+            {MAX_HINTS - hintsUsed} hints left
+          </span>
+        </div>
         <Button
           variant="ghost"
           size="sm"
@@ -164,7 +178,6 @@ export const CrosswordGame = ({
                           newValue[charIndex] = e.target.value.toUpperCase();
                           handleInputChange(index, newValue.join(""));
 
-                          // Auto-focus next input
                           if (
                             e.target.value &&
                             charIndex < wc.word.length - 1
@@ -196,23 +209,36 @@ export const CrosswordGame = ({
                       />
                     ))}
                   </div>
-                  <Button
-                    size="sm"
-                    onClick={() => checkAnswer(index)}
-                    disabled={
-                      wc.userInput.length !== wc.word.length ||
-                      wc.isCorrect === true
-                    }
-                    className="self-end"
-                  >
-                    {wc.isCorrect === true ? (
-                      <Check className="w-4 h-4" />
-                    ) : wc.isCorrect === false ? (
-                      <X className="w-4 h-4" />
-                    ) : (
-                      "Check"
-                    )}
-                  </Button>
+                  <div className="flex flex-col gap-1 self-end">
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => useHint(index)}
+                      disabled={
+                        hintsUsed >= MAX_HINTS || wc.isCorrect === true
+                      }
+                      className="px-2"
+                      title="Reveal a letter"
+                    >
+                      <Lightbulb className="w-4 h-4" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      onClick={() => checkAnswer(index)}
+                      disabled={
+                        wc.userInput.length !== wc.word.length ||
+                        wc.isCorrect === true
+                      }
+                    >
+                      {wc.isCorrect === true ? (
+                        <Check className="w-4 h-4" />
+                      ) : wc.isCorrect === false ? (
+                        <X className="w-4 h-4" />
+                      ) : (
+                        "Check"
+                      )}
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>

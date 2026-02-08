@@ -39,9 +39,11 @@ export const CandyCrushGame = ({
   const [isAnimating, setIsAnimating] = useState(false);
   const [isShuffling, setIsShuffling] = useState(false);
   const [hintCells, setHintCells] = useState<{ row: number; col: number }[] | null>(null);
+  const [gameEnded, setGameEnded] = useState(false);
   const idRef = useRef(0);
   const hintTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastActionRef = useRef<number>(Date.now());
+  const touchStartRef = useRef<{ row: number; col: number; x: number; y: number } | null>(null);
   const nextId = () => idRef.current++;
 
   const getRandomIcon = useCallback(() => {
@@ -82,14 +84,12 @@ export const CandyCrushGame = ({
   const findHintMove = useCallback((g: Cell[][]): { row: number; col: number }[] | null => {
     for (let r = 0; r < GRID_SIZE; r++) {
       for (let c = 0; c < GRID_SIZE; c++) {
-        // Try swap right
         if (c + 1 < GRID_SIZE) {
           const swapped = swapInGrid(g, r, c, r, c + 1);
           if (hasMatchAt(swapped, r, c) || hasMatchAt(swapped, r, c + 1)) {
             return [{ row: r, col: c }, { row: r, col: c + 1 }];
           }
         }
-        // Try swap down
         if (r + 1 < GRID_SIZE) {
           const swapped = swapInGrid(g, r, c, r + 1, c);
           if (hasMatchAt(swapped, r, c) || hasMatchAt(swapped, r + 1, c)) {
@@ -101,9 +101,9 @@ export const CandyCrushGame = ({
     return null;
   }, []);
 
-  // Start hint timer whenever grid changes and we're not animating
+  // Start hint timer - disabled when game ended
   useEffect(() => {
-    if (isAnimating || isShuffling || grid.length === 0) return;
+    if (isAnimating || isShuffling || grid.length === 0 || gameEnded) return;
     if (hintTimerRef.current) clearTimeout(hintTimerRef.current);
 
     hintTimerRef.current = setTimeout(() => {
@@ -114,7 +114,7 @@ export const CandyCrushGame = ({
     return () => {
       if (hintTimerRef.current) clearTimeout(hintTimerRef.current);
     };
-  }, [grid, isAnimating, isShuffling, findHintMove]);
+  }, [grid, isAnimating, isShuffling, findHintMove, gameEnded]);
 
   const isHintCell = (row: number, col: number) => {
     return hintCells?.some((h) => h.row === row && h.col === col) ?? false;
@@ -214,9 +214,7 @@ export const CandyCrushGame = ({
         newGrid[row][col] = null as any;
       });
       for (let col = 0; col < GRID_SIZE; col++) {
-        // Count how far each cell needs to drop
         let writeRow = GRID_SIZE - 1;
-        const columnCells: (Cell | null)[] = [];
         for (let row = GRID_SIZE - 1; row >= 0; row--) {
           if (newGrid[row][col] !== null) {
             const dropDist = writeRow - row;
@@ -225,9 +223,8 @@ export const CandyCrushGame = ({
             writeRow--;
           }
         }
-        // Fill empty top rows with new cells that drop in
         for (let row = writeRow; row >= 0; row--) {
-          const dropDist = writeRow + 1; // drops from above the grid
+          const dropDist = writeRow + 1;
           newGrid[row][col] = { icon: getRandomIcon(), id: nextId(), isNew: true, dropDistance: dropDist + 1 };
         }
       }
@@ -237,7 +234,7 @@ export const CandyCrushGame = ({
   );
 
   const processMatches = useCallback(
-    async (currentGrid: Cell[][]) => {
+    async (currentGrid: Cell[][], currentScore: number) => {
       let g = currentGrid.map((r) => r.slice());
       let totalMatches = 0;
       while (true) {
@@ -249,10 +246,22 @@ export const CandyCrushGame = ({
         setGrid([...g]);
         await new Promise((resolve) => setTimeout(resolve, 400));
       }
+
+      const newScore = currentScore + totalMatches * 10;
       if (totalMatches > 0) {
-        setScore((prev) => prev + totalMatches * 10);
+        setScore(newScore);
       }
-      // Check if stuck
+
+      // Check win FIRST (after all cascades complete)
+      if (newScore >= targetScore) {
+        setGameEnded(true);
+        setHintCells(null);
+        if (hintTimerRef.current) clearTimeout(hintTimerRef.current);
+        setIsAnimating(false);
+        return;
+      }
+
+      // Only check for stuck/loss AFTER cascades are done and not won
       if (!hasAnyValidMove(g)) {
         setIsShuffling(true);
         await new Promise((resolve) => setTimeout(resolve, 600));
@@ -261,9 +270,10 @@ export const CandyCrushGame = ({
         await new Promise((resolve) => setTimeout(resolve, 800));
         setIsShuffling(false);
       }
+
       setIsAnimating(false);
     },
-    [findMatches, removeMatchesAndDrop],
+    [findMatches, removeMatchesAndDrop, targetScore],
   );
 
   function swapInGrid(g: Cell[][], r1: number, c1: number, r2: number, c2: number) {
@@ -274,34 +284,26 @@ export const CandyCrushGame = ({
     return newGrid;
   }
 
-  const handleCellClick = useCallback(
-    (row: number, col: number) => {
-      if (isAnimating || moves <= 0) return;
-      resetHintTimer();
+  const trySwap = useCallback(
+    (r1: number, c1: number, r2: number, c2: number) => {
+      if (isAnimating || gameEnded) return;
+      if (r2 < 0 || r2 >= GRID_SIZE || c2 < 0 || c2 >= GRID_SIZE) return;
 
-      if (!selected) {
-        setSelected({ row, col });
-        return;
-      }
-
-      const r1 = selected.row, c1 = selected.col;
-      const r2 = row, c2 = col;
       const isAdjacent = (Math.abs(r1 - r2) === 1 && c1 === c2) || (Math.abs(c1 - c2) === 1 && r1 === r2);
-
-      if (!isAdjacent) {
-        setSelected({ row, col });
-        return;
-      }
+      if (!isAdjacent) return;
 
       setIsAnimating(true);
       setSelected(null);
+      resetHintTimer();
+
       const swapped = swapInGrid(grid, r1, c1, r2, c2);
       const valid = hasMatchAt(swapped, r1, c1) || hasMatchAt(swapped, r2, c2);
 
       if (valid) {
-        setMoves((prev) => prev - 1);
+        const newMoves = moves - 1;
+        setMoves(newMoves);
         setGrid(swapped);
-        processMatches(swapped);
+        processMatches(swapped, score);
       } else {
         setGrid(swapped);
         setTimeout(() => {
@@ -310,11 +312,89 @@ export const CandyCrushGame = ({
         }, 250);
       }
     },
-    [grid, selected, isAnimating, moves, processMatches, resetHintTimer],
+    [grid, isAnimating, moves, score, gameEnded, processMatches, resetHintTimer],
   );
 
-  const isCompleted = score >= targetScore;
-  const isGameOver = moves <= 0 && !isCompleted;
+  const handleCellClick = useCallback(
+    (row: number, col: number) => {
+      if (isAnimating || gameEnded) return;
+      resetHintTimer();
+
+      if (!selected) {
+        setSelected({ row, col });
+        return;
+      }
+
+      const r1 = selected.row, c1 = selected.col;
+      if (r1 === row && c1 === col) {
+        setSelected(null);
+        return;
+      }
+
+      const isAdjacent = (Math.abs(r1 - row) === 1 && c1 === col) || (Math.abs(c1 - col) === 1 && r1 === row);
+      if (!isAdjacent) {
+        setSelected({ row, col });
+        return;
+      }
+
+      trySwap(r1, c1, row, col);
+    },
+    [selected, isAnimating, gameEnded, resetHintTimer, trySwap],
+  );
+
+  // Touch/swipe handlers
+  const handleTouchStart = useCallback(
+    (row: number, col: number, e: React.TouchEvent) => {
+      if (isAnimating || gameEnded) return;
+      const touch = e.touches[0];
+      touchStartRef.current = { row, col, x: touch.clientX, y: touch.clientY };
+      resetHintTimer();
+    },
+    [isAnimating, gameEnded, resetHintTimer],
+  );
+
+  const handleTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      if (!touchStartRef.current || isAnimating || gameEnded) return;
+      const touch = e.changedTouches[0];
+      const { row, col, x, y } = touchStartRef.current;
+      const dx = touch.clientX - x;
+      const dy = touch.clientY - y;
+      const minSwipe = 20;
+
+      touchStartRef.current = null;
+
+      if (Math.abs(dx) < minSwipe && Math.abs(dy) < minSwipe) {
+        // Treat as tap
+        handleCellClick(row, col);
+        return;
+      }
+
+      let targetRow = row, targetCol = col;
+      if (Math.abs(dx) > Math.abs(dy)) {
+        targetCol += dx > 0 ? 1 : -1;
+      } else {
+        targetRow += dy > 0 ? 1 : -1;
+      }
+
+      setSelected(null);
+      trySwap(row, col, targetRow, targetCol);
+    },
+    [isAnimating, gameEnded, handleCellClick, trySwap],
+  );
+
+  // Check for game over (out of moves, after cascades, not won)
+  const isCompleted = gameEnded && score >= targetScore;
+  const isGameOver = !isAnimating && moves <= 0 && !isCompleted && !gameEnded;
+
+  // Set gameEnded on loss too
+  useEffect(() => {
+    if (isGameOver && !gameEnded) {
+      setGameEnded(true);
+      setHintCells(null);
+      if (hintTimerRef.current) clearTimeout(hintTimerRef.current);
+    }
+  }, [isGameOver, gameEnded]);
 
   if (grid.length === 0) return null;
 
@@ -347,7 +427,6 @@ export const CandyCrushGame = ({
 
       {/* Game Grid with shuffle overlay */}
       <div className="relative mb-4 mx-auto" style={{ maxWidth: "300px" }}>
-        {/* Shuffle overlay */}
         <AnimatePresence>
           {isShuffling && (
             <motion.div
@@ -373,7 +452,7 @@ export const CandyCrushGame = ({
             <div key={rowIndex} className="flex gap-1 justify-center">
               {row.map((cell, colIndex) => {
                 const isSelected = selected?.row === rowIndex && selected?.col === colIndex;
-                const isHint = isHintCell(rowIndex, colIndex);
+                const isHint = !gameEnded && isHintCell(rowIndex, colIndex);
                 const dropDist = cell?.dropDistance ?? 0;
 
                 return (
@@ -411,12 +490,14 @@ export const CandyCrushGame = ({
                               : undefined,
                           }
                     }
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={!gameEnded ? { scale: 1.1 } : undefined}
+                    whileTap={!gameEnded ? { scale: 0.95 } : undefined}
                     onClick={() => handleCellClick(rowIndex, colIndex)}
-                    disabled={isAnimating || isCompleted || isGameOver}
+                    onTouchStart={(e) => handleTouchStart(rowIndex, colIndex, e)}
+                    onTouchEnd={handleTouchEnd}
+                    disabled={gameEnded || isAnimating}
                     style={{ backgroundColor: cell.icon.colour }}
-                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-xl sm:text-2xl transition-colors ${
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-xl sm:text-2xl transition-colors touch-none ${
                       isHint ? "ring-2 ring-primary/50" : ""
                     }`}
                   >
@@ -434,7 +515,7 @@ export const CandyCrushGame = ({
 
       {/* Game Over / Success */}
       <AnimatePresence>
-        {(isCompleted || isGameOver) && (
+        {(isCompleted || isGameOver || (gameEnded && score < targetScore)) && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -462,6 +543,7 @@ export const CandyCrushGame = ({
                       setScore(0);
                       setMoves(20);
                       setSelected(null);
+                      setGameEnded(false);
                       resetHintTimer();
                     }}
                     className="flex-1"
@@ -478,7 +560,7 @@ export const CandyCrushGame = ({
         )}
       </AnimatePresence>
 
-      {!isCompleted && !isGameOver && (
+      {!gameEnded && !isGameOver && (
         <p className="text-center text-sm text-muted-foreground">
           Match 3+ icons to score points!
         </p>
