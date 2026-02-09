@@ -127,7 +127,7 @@ export const CrosswordGame = ({
             Attempts: {attempts}
           </span>
           <span className="flex items-center gap-1 text-sm text-muted-foreground">
-            <Lightbulb className="w-3.5 h-3.5" />
+            <Lightbulb className="w-3.5 h-3.5 text-accent" />
             {MAX_HINTS - hintsUsed} hints left
           </span>
         </div>
@@ -166,7 +166,7 @@ export const CrosswordGame = ({
               </span>
               <div className="flex-1">
                 <p className="text-sm text-muted-foreground mb-2">{wc.clue}</p>
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-2">
                   <div className="flex gap-1 flex-1">
                     {wc.word.split("").map((_, charIndex) => (
                       <Input
@@ -203,24 +203,23 @@ export const CrosswordGame = ({
                         }}
                         disabled={wc.isCorrect === true}
                         className={`
-                          w-8 h-10 sm:w-10 sm:h-12 text-center font-display text-lg uppercase
+                          w-8 h-10 sm:w-10 sm:h-12 text-center font-display text-xs sm:text-lg  uppercase
+                          px-1 sm:p-2
                           ${wc.isCorrect === true ? "bg-primary/20" : ""}
                         `}
                       />
                     ))}
                   </div>
-                  <div className="flex flex-col gap-1 self-end">
+                  <div className="flex flex-row gap-1 self-end">
                     <Button
                       size="sm"
                       variant="ghost"
                       onClick={() => useHint(index)}
-                      disabled={
-                        hintsUsed >= MAX_HINTS || wc.isCorrect === true
-                      }
+                      disabled={hintsUsed >= MAX_HINTS || wc.isCorrect === true}
                       className="px-2"
                       title="Reveal a letter"
                     >
-                      <Lightbulb className="w-4 h-4" />
+                      <Lightbulb className="w-4 h-4 text-accent" />
                     </Button>
                     <Button
                       size="sm"

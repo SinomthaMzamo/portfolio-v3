@@ -83,16 +83,16 @@ export interface FileItem {
 }
 
 export const FILE_SYSTEM: FileItem = {
-  name: '~',
-  type: 'directory',
+  name: "~",
+  type: "directory",
   children: [
     {
-      name: 'about',
-      type: 'directory',
+      name: "about",
+      type: "directory",
       children: [
         {
-          name: 'bio.txt',
-          type: 'file',
+          name: "bio.txt",
+          type: "file",
           content: `╔══════════════════════════════════════════════════════════════════╗
 ║                        SINOMTHA MZAMO                              ║
 ║              Full-Stack Developer & Cloud Engineer                 ║
@@ -113,13 +113,13 @@ software.
 📍  Cape Town, South Africa
 🔗  linkedin.com/in/sinomtha-mzamo
 🐙  github.com/SinomthaMzmo
-`
+`,
         },
         {
-          name: 'contact.txt',
-          type: 'file',
+          name: "contact.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║                           CONTACT INFO                                 ║
+║                           CONTACT INFO                                ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
 📧 Email:      sinomtha.mzamo@gmail.com
@@ -130,276 +130,333 @@ software.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Let's build something together!
-`
-        }
-      ]
+`,
+        },
+      ],
     },
     {
-      name: 'projects',
-      type: 'directory',
+      name: "projects",
+      type: "directory",
       children: [
         {
-          name: 'chill_appointment_booking.txt',
-          type: 'file',
+          name: "vuka_coach_ai_interview_platform.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║           CHILL APPOINTMENT BOOKING UX REVAMP                          ║
+║             VUKA COACH - AI INTERVIEW COACHING PLATFORM                ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-🔧 Tech Stack: Reactjs | Styled Components
+🔧 Tech Stack: React | FastAPI | Google Gemini | Groq Whisper | Google Cloud TTS | Python
 
-Full front-end rewrite for an appointment booking platform catering to 
-mobile-first users in the beauty industry.
+Co-developed an AI-powered interview coaching platform in 36 hours to help
+address South Africa’s youth unemployment challenge through personalized
+interview practice and real-time AI feedback.
 
 Features:
-• Modern, responsive UI with smooth animations
-• Optimized booking flow for mobile users  
-• Beauty industry focused design system
-• Styled Components for maintainable CSS-in-JS
+• AI-generated interview questions based on CV + Job Description parsing
+• Real-time voice interview practice with speech-to-text (Whisper)
+• AI feedback on delivery, confidence, relevance, and professionalism
+• Performance reports with actionable insights and metrics
+• STAR method story generation for behavioral interviews
+• Mobile-first, data-efficient UI optimized for low-end devices
 
 🔗 github.com/SinomthaMzamo
-`
+`,
         },
         {
-          name: 'voice_order_ecommerce.txt',
-          type: 'file',
+          name: "ai_portfolio_assistant_content_generator.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║           VOICE ORDER - AI ECOMMERCE MENTOR                            ║
+║        AI PORTFOLIO ASSISTANT - PROFESSIONAL CONTENT GENERATOR        ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-🔧 Tech Stack: Python | React Native | Next.js | SpeechRecognition
+🔧 Tech Stack: React | TypeScript | Supabase | PostgreSQL | Gemini AI | Edge Functions
 
-Open-source text-to-speech ecommerce web app designed for visually impaired 
-users to access full order and checkout capabilities using voice commands.
+Co-developed an AI-powered web application that transforms user input into
+polished professional content such as bios, project summaries, and learning
+reflections using Gemini Generative AI.
 
 Features:
-• AI-powered voice recognition for orders
-• Full accessibility support
-• Cross-platform mobile app
-• Real-time speech processing
+• Dual interaction modes (chatbot + structured form workflow)
+• Semantic validation + context retention across chat turns
+• Dynamic question flow that adapts to user input and edits
+• Content refinement via natural language instructions
+• Generation history with persistent storage + user preferences
+• Multi-format export (PDF, Markdown, Plain Text)
+• Secure multi-tenant backend using Supabase RLS policies
 
 🔗 github.com/SinomthaMzamo
-`
+`,
         },
         {
-          name: 'personal_portfolio.txt',
-          type: 'file',
+          name: "dha_booking_system_ux_revamp.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║               PERSONAL PORTFOLIO & CHATBOT                             ║
+║             UX REVAMP - DHA APPOINTMENT BOOKING SYSTEM                 ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-🔧 Tech Stack: OpenAI | Next.js | Supabase
+🔧 Tech Stack: Angular | TypeScript | Cursor
 
-Developer portfolio with an AI-powered chatbot. 
-Visitors can ask questions and get instant answers about my experience 
-and projects.
+Redesigned the online DHA appointment booking experience to improve usability,
+feature visibility, and user-centricity for cross-device users.
 
 Features:
-• AI chatbot powered by OpenAI
-• Dynamic portfolio content
-• Supabase backend
-• Real-time chat interface
+• Landing page redesign to introduce services and platform value
+• Improved group booking visibility via layout + visual hierarchy
+• Progress indicators to guide users through booking flow
+• Alternative branch suggestions for failed searches
+• Improved navigation + data persistence for smooth backtracking
+• Cross-browser and cross-device support (including Safari on iOS)
 
 🔗 github.com/SinomthaMzamo
-`
+`,
         },
         {
-          name: 'bliss_editorial.txt',
-          type: 'file',
+          name: "personal_portfolio_dashboard.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║           BLISS EDITORIAL - DOCKER MANAGEMENT                          ║
+║               PERSONAL PORTFOLIO & ADMIN DASHBOARD                    ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-🔧 Tech Stack: Python | Docker | Shell
+🔧 Tech Stack: Angular | TypeScript | AWS (S3, CloudFront, Lambda, DynamoDB) | Cognito | SES | Gmail API
 
-A Docker-centric approach to managing web development environments. 
-Full container orchestration with Traefik for modern software systems.
+Built a fully deployed portfolio showcasing projects and blog posts, with a
+secure admin dashboard to manage content, update CV/avatar, and respond to
+messages without touching code.
 
 Features:
-• Container orchestration
-• Traefik reverse proxy
-• Automated deployment pipelines
-• Development environment isolation
+• Responsive Angular frontend deployed via S3 + CloudFront CDN
+• Serverless backend using Lambda + API Gateway + DynamoDB
+• Infrastructure-as-Code via CloudFormation
+• Secure authentication + authorization using AWS Cognito
+• Gmail API + AWS SES integration for contact form notifications and replies
+• CMS-like dashboard for content and profile management
 
 🔗 github.com/SinomthaMzamo
-`
+`,
         },
         {
-          name: 'bank_api_mocking.txt',
-          type: 'file',
+          name: "bhala_edolweni_debt_management.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║                    BANK API MOCKING                                    ║
+║          BHALA EDOLWENI - DEBTOR MANAGEMENT WEB APPLICATION            ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-🔧 Tech Stack: Python | Flask
+🔧 Tech Stack: Python | REST API | MVC | React | Kotlin | Kotlin Multiplatform (KMP)
 
-Backend API for bank account operations designed specifically for 
-testing and development environments.
+Developed a full-stack debtor management application for small business owners
+to track customers who owe money, inspired by managing debtors for my own
+small business.
 
 Features:
-• Mock banking transactions
-• Account management APIs
-• Transaction history simulation
-• Rate limiting and auth simulation
+• REST API supporting both headless and React-based clients
+• Full CRUD implementation with role-based access (Admin, Agent, Debtor)
+• Clean MVC architecture with separation of concerns
+• Strong test coverage using TDD/BDD practices (unittest + pytest)
+• AES encryption for sensitive debtor and payment data
+• CORS-safe client-server integration for scalable deployments
+• Backend migration in progress: Python → Kotlin for scalability/performance
 
 🔗 github.com/SinomthaMzamo
-`
+`,
         },
-        {
-          name: 'readpeak_carpooling.txt',
-          type: 'file',
-          content: `╔═══════════════════════════════════════════════════════════════════════╗
-║               READPEAK - CARPOOLING PLATFORM                           ║
-╚═══════════════════════════════════════════════════════════════════════╝
-
-🔧 Tech Stack: Dart | Flutter | Python | Firebase
-
-A new mobile carpooling platform designed to connect commuters with 
-available rides in their area.
-
-Features:
-• Real-time ride matching
-• Flutter cross-platform app
-• Firebase backend
-• Location-based services
-
-🔗 github.com/SinomthaMzamo
-`
-        },
-        {
-          name: 'metrictools_confluence.txt',
-          type: 'file',
-          content: `╔═══════════════════════════════════════════════════════════════════════╗
-║      METRICTOOLS - CONFLUENCE ACTIVITY ANALYTICS                       ║
-╚═══════════════════════════════════════════════════════════════════════╝
-
-🔧 Tech Stack: Selenium | Prometheus | Grafana | Python
-
-An automated metrics scraper leveraging Selenium for real-time 
-Confluence activity tracking and visualization.
-
-Features:
-• Automated web scraping
-• Prometheus metrics collection  
-• Grafana dashboards
-• Real-time activity monitoring
-
-🔗 github.com/SinomthaMzamo
-`
-        },
-        {
-          name: 'toy_robot_server.txt',
-          type: 'file',
-          content: `╔═══════════════════════════════════════════════════════════════════════╗
-║         TOY ROBOT - MULTIPLAYER GAME SERVER                           ║
-╚═══════════════════════════════════════════════════════════════════════╝
-
-🔧 Tech Stack: Python | Docker | JSON | HTTP
-
-A WebSocket-based multiplayer game server enabling up to 4 players 
-using HTTP and JSON API. Full documentation with Sphinx/ReStructuredText.
-
-Features:
-• Real-time multiplayer support
-• WebSocket communication
-• JSON API endpoints
-• Containerized deployment
-
-🔗 github.com/SinomthaMzamo
-`
-        },
-        {
-          name: 'mr_africa_health.txt',
-          type: 'file',
-          content: `╔═══════════════════════════════════════════════════════════════════════╗
-║          MR AFRICA - HEALTH INFORMATION PLATFORM                       ║
-╚═══════════════════════════════════════════════════════════════════════╝
-
-🔧 Tech Stack: React | Python | Express
-
-Backend work for routing/navigating for a health information platform 
-for African men. Features 4 sub-modules with specialized health content.
-
-Features:
-• Health information API
-• Multi-module architecture
-• Express routing
-• React frontend integration
-
-🔗 github.com/SinomthaMzamo
-`
-        }
-      ]
+      ],
     },
     {
-      name: 'experience',
-      type: 'directory',
+      name: "experience",
+      type: "directory",
       children: [
         {
-          name: 'software_developer_intern.txt',
-          type: 'file',
+          name: "python_game_design_tutor_kodland.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║           SOFTWARE DEVELOPER INTERN @ EDHUB                            ║
-║                   Jan 2023 - Dec 2025                                  ║
+║              PYTHON GAME DESIGN TUTOR @ KODLAND                        ║
+║                    Nov 2025 - Present                                  ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-📍 EdHub | Cape Town, South Africa
+📍 Kodland | Remote
 
 Key Achievements:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-• Built custom admin dashboards for tracking performance metrics for
-  edtech startup, saving manual tracking effort by ~50+ hours/year
+• Teach Python programming through structured game development curricula,
+  delivering both group classes and 1-on-1 tutoring sessions
 
-• Tailored data visualization solutions utilizing Tableau, PowerBI,
-  and Preset SQL, enhancing teacher and admin experience, allowing
-  for insights previously unknown to the business
+• Guide students through hands-on projects using Turtle and Pygame,
+  covering loops, conditionals, functions, lists, and introductory OOP
 
-• Delivered micro-UX capabilities like alert scheduling and content
-  filtering for a next-gen education platform using Java, JavaScript,
-  and Angular 17 (with tests using Jasmine and Mockito)
+• Deliver interactive online lessons via Zoom using screen sharing and
+  annotation tools to explain algorithms, debugging, and code structure
 
-• Developed a Confluence activity wiki bot utilizing Selenium-based
-  web scraping to aggregate blog insights and provide automated search
-  and fetch functionality via Slack platform
+• Review student submissions on the Kodland learning platform, providing
+  targeted feedback to improve correctness, readability, and problem-solving
 
-• Worked with agile team using Jira, creating user stories, sprints,
-  and using GitHub flow branching, efficient code review and approval
-  processes aligned with test coverage thresholds
-`
+• Use Kodland Backoffice tools to manage student progress, schedules, and
+  planning for smooth lesson delivery and learner support
+
+• Collaborate with managers and customer support via Slack to coordinate
+  student needs and resolve issues efficiently
+`,
         },
         {
-          name: 'coding_expert_trainer.txt',
-          type: 'file',
+          name: "fullstack_freelance_student_accommodation_platform.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║               CODING EXPERT - AI TRAINER                               ║
-║                        Outlier AI                                      ║
+║          FULL-STACK DEVELOPER (FREELANCE)                              ║
+║     STUDENT ACCOMMODATION MANAGEMENT PLATFORM                          ║
+║                 Aug 2025 - Oct 2025                                    ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-📍 Outlier AI | Remote
+📍 Freelance | Remote
 
 Key Achievements:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-• Conducted 15+ million code evaluations, assessing SOTA Code AI 
-  responses and test cases in 3 languages across front and back-end 
-  domains with a focus on industry best practices
+• Designed and developed a booking and property management system for a
+  student accommodation company managing 3 properties
 
-• Prompt engineering with focus on problem solving and overall mastery
-  of software development best practices
+• Conducted requirements gathering sessions and translated business needs
+  into technical specifications
 
-• Designed and solved various software engineering problems with varying
-  levels of difficulty using Python, JavaScript, TypeScript
-`
-        }
-      ]
+• Delivered iterative prototypes using Figma mockups for stakeholder approval
+
+• Built a responsive React booking platform using Vite, React Hook Form,
+  Zod validation, and ReactQuery for server state management
+
+• Implemented a real-time admin dashboard with occupancy tracking, tenant
+  directory, broadcast messaging, and property analytics
+
+• Integrated Supabase authentication, PostgreSQL database, and secure file
+  storage for tenant documentation
+
+• Reduced booking processing time from 48 hours to under 5 minutes through
+  digital automation and streamlined workflows
+
+• Built exportable reporting features for financial reconciliation and
+  capacity planning
+
+🔧 Tech Stack: React | Tailwind CSS | Supabase | PostgreSQL | Zod | ReactQuery
+`,
+        },
+        {
+          name: "software_developer_intern_safetyio.txt",
+          type: "file",
+          content: `╔═══════════════════════════════════════════════════════════════════════╗
+║          SOFTWARE DEVELOPER INTERN @ SAFETY IO                         ║
+║                   Jan 2025 - Sep 2025                                  ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+📍 Safety IO | Cape Town, South Africa
+
+Key Achievements:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Designed UI prototypes, workflows, org charts, and team mappings using
+  Figma & Miro to support agile delivery and process improvements
+
+• Collaborated with cross-functional teams (developers, PMs, designers,
+  QA engineers) through stand-ups, retrospectives, pair programming,
+  and internal documentation
+
+• Migrated Bamboo runner to Bitbucket Pipelines, improving CI/CD efficiency
+  and reducing deployment errors by 25%
+
+• Analysed Datadog logs to identify and fix performance bottlenecks,
+  improving uptime and response times
+
+• Developed and integrated RESTful APIs, authentication workflows using
+  AWS Cognito, and cloud deployments via AWS Lambda, S3, and API Gateway
+
+• Built and deployed full-stack applications using Angular, TypeScript,
+  and PostgreSQL
+
+• Conducted a deep dive into modern development tools like Cursor and
+  applied them in internal projects
+
+• Initiated and co-developed a Confluence scraping side project to generate
+  activity analytics and search functionality similar to a GitHub heatmap
+
+• Implemented agile training practices in backlog refinement and flow metrics
+  tracking using Nave and the Atlassian ecosystem
+
+🔧 Tech Stack: Angular | TypeScript | PostgreSQL | AWS | Datadog | Bitbucket Pipelines
+`,
+        },
+        {
+          name: "coding_expert_ai_trainer_outlier_ai.txt",
+          type: "file",
+          content: `╔═══════════════════════════════════════════════════════════════════════╗
+║               CODING EXPERT - AI TRAINER @ OUTLIER AI                  ║
+║                    Aug 2024 - Present                                  ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+📍 Outlier AI | Global / Remote
+
+Key Achievements:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Reviewed and optimized AI-generated code in JavaScript, Python, Java,
+  and TypeScript for correctness, clarity, and efficiency under tight deadlines
+
+• Delivered detailed, actionable feedback to improve accuracy, tone,
+  and alignment with project guidelines
+
+• Completed 100+ coding tasks in one month, earning over R25,000 through
+  consistent high-quality delivery
+
+• Designed coding challenges and structured solutions to strengthen AI
+  reasoning and problem-solving capabilities
+
+• Applied annotation guidelines consistently, resolving ambiguous edge cases
+  with strong engineering judgment
+
+• Gained hands-on experience with RLHF workflows and structured evaluation
+  pipelines for improving model performance
+`,
+        },
+        {
+          name: "data_science_intern_codsoft.txt",
+          type: "file",
+          content: `╔═══════════════════════════════════════════════════════════════════════╗
+║                 DATA SCIENCE INTERN @ CODSOFT                          ║
+║                   Apr 2024 - May 2024                                  ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+📍 CodSoft | Remote
+
+Key Achievements:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Completed a structured internship focused on applying data science
+  principles through hands-on machine learning projects
+
+• Built predictive and classification models using Python, Pandas, NumPy,
+  and Scikit-learn on datasets such as Titanic Survival Prediction,
+  Movie Rating Prediction, and Iris Flower Classification
+
+• Applied preprocessing, feature engineering, and evaluation techniques
+  to improve model performance and interpretability
+
+• Strengthened understanding of regression and classification algorithms
+  including Logistic Regression, Decision Trees, and Random Forests
+
+• Improved reporting and visualization skills using Matplotlib and Seaborn,
+  producing clear insights from model outputs
+
+• Gained exposure to real-world applications like sales forecasting and
+  fraud detection through applied learning projects
+
+🔧 Tech Stack: Python | Pandas | NumPy | Scikit-learn | Matplotlib
+`,
+        },
+      ],
     },
     {
-      name: 'skills',
-      type: 'directory',
+      name: "skills",
+      type: "directory",
       children: [
         {
-          name: 'backend.txt',
-          type: 'file',
+          name: "backend.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
 ║                    BACKEND & APIs                                      ║
 ╚═══════════════════════════════════════════════════════════════════════╝
@@ -414,52 +471,47 @@ Key Achievements:
   🐘 PostgreSQL    ████████████████░░░░  Advanced
   📊 MySQL         ██████████████░░░░░░  Intermediate
   🍃 MongoDB       ██████████████░░░░░░  Intermediate
-  🔴 Redis         ████████████░░░░░░░░  Intermediate
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-`
+`,
         },
         {
-          name: 'frontend.txt',
-          type: 'file',
+          name: "frontend.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
 ║                       FRONTEND                                         ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
-  ⚛️  React         ████████████████████  Expert
+  ⚛️  React         ████████████████░░░░  Advanced
   📐 Angular       ████████████████░░░░  Advanced
-  🟦 TypeScript    ████████████████████  Expert
-  🎨 JavaScript    ████████████████████  Expert
-  🖌️  Tailwind CSS  ████████████████████  Expert
-  💅 Styled Comp   ██████████████░░░░░░  Advanced
+  🟦 TypeScript    ██████████████████░░  Advanced
+  🎨 JavaScript    ██████████████████░░  Advanced
+  🖌️  Tailwind CSS  ███████████████░░░░░  Advanced
   🔥 Next.js       ████████████████░░░░  Advanced
-  📱 React Native  ██████████████░░░░░░  Advanced
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-`
+`,
         },
         {
-          name: 'mobile.txt',
-          type: 'file',
+          name: "mobile.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
 ║                  MOBILE DEVELOPMENT                                    ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
-  🐦 Flutter       ██████████████░░░░░░  Advanced
-  📱 React Native  ██████████████░░░░░░  Advanced
-  🎯 Dart          ██████████████░░░░░░  Advanced
+  🐦 Flutter       ██████████░░░░░░░░░░  Competent
   ☕ Kotlin        ████████████░░░░░░░░  Intermediate
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-`
+`,
         },
         {
-          name: 'cloud_devops.txt',
-          type: 'file',
+          name: "cloud_devops.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
 ║                   CLOUD & DEVOPS                                       ║
 ╚═══════════════════════════════════════════════════════════════════════╝
@@ -467,68 +519,62 @@ Key Achievements:
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
   ☁️  AWS           ████████████████░░░░  Advanced (Certified)
-  🐳 Docker        ████████████████████  Expert
-  🎡 Kubernetes    ██████████████░░░░░░  Advanced
-  🔄 CI/CD         ████████████████░░░░  Advanced
-  📦 Terraform     ████████████░░░░░░░░  Intermediate
+  🐳 Docker        ██████████████░░░░░░  Intermediate
+  🔄 CI/CD         ██████████████░░░░░░  Intermediate
   🐙 GitHub Actions████████████████░░░░  Advanced
-  📊 Grafana       ████████████████░░░░  Advanced
-  📈 Prometheus    ██████████████░░░░░░  Intermediate
+  📊 Datadog       ████████████░░░░░░░░  Competent
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-`
+`,
         },
         {
-          name: 'ai_ml.txt',
-          type: 'file',
+          name: "ai_ml.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
 ║               ARTIFICIAL INTELLIGENCE                                  ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
-  🤖 LangChain     ████████████████░░░░  Advanced
   🧠 OpenAI API    ████████████████░░░░  Advanced
-  🦜 CrewAI        ██████████████░░░░░░  Intermediate
-  📊 TensorFlow    ████████████░░░░░░░░  Intermediate
+  📊 TensorFlow    ██████████░░░░░░░░░░  Competent
   🔮 Prompt Eng    ████████████████████  Expert
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-`
+`,
         },
         {
-          name: 'testing.txt',
-          type: 'file',
+          name: "testing.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
 ║                  TESTING & QA                                          ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
-  🧪 Jest          ████████████████████  Expert
-  🎭 Jasmine       ████████████████░░░░  Advanced
-  🔧 Mockito       ████████████████░░░░  Advanced
+  🧪 Jest          ████████████████░░░░  Advanced
+  🎭 Playwright       ██████████░░░░░░░░░░  Competent
   🌐 Selenium      ████████████████░░░░  Advanced
   🎯 Pytest        ████████████████████  Expert
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-`
-        }
-      ]
+`,
+        },
+      ],
     },
     {
-      name: 'education',
-      type: 'directory',
+      name: "education",
+      type: "directory",
       children: [
         {
-          name: 'wethinkcode.txt',
-          type: 'file',
+          name: "wethinkcode.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
 ║                      WETHINKCODE_                                      ║
 ║              National Certificate in IT                                ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-📍 Cape Town Campus
+📍 Durban Campus
 📅 2022 - 2024
 
 Program Highlights:
@@ -545,17 +591,85 @@ Skills Developed:
 • System Design
 • Problem Solving
 • Team Collaboration
-`
-        }
-      ]
+`,
+        },
+        {
+          name: "ufs_physics_astrophysics.txt",
+          type: "file",
+          content: `╔═══════════════════════════════════════════════════════════════════════╗
+║               UNIVERSITY OF THE FREE STATE (INCOMPLETE)                ║
+║                  BSc PHYSICS & ASTROPHYSICS                            ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+📍 Bloemfontein, South Africa
+📅 Jan 2020 - May 2022
+
+Program Highlights:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Completed advanced coursework in Vector Calculus, Differential Equations,
+  Mathematical Modeling (Excel), and Scientific Computing (MATLAB)
+
+• Studied Physics, Chemistry, Astrophysics, and Engineering Statics with
+  strong mathematical foundations
+
+• Developed practical lab experience and formal scientific report writing
+  skills through structured experimental work
+
+Achievements & Skills:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Achieved six distinctions in first year
+• Strengthened problem-solving, critical thinking, and analytical reasoning
+• Built strong data analysis and scientific computing capability
+• Improved technical communication through research-style reporting
+`,
+        },
+        {
+          name: "wynberg_girls_high_school.txt",
+          type: "file",
+          content: `╔═══════════════════════════════════════════════════════════════════════╗
+║                 WYNBERG GIRLS' HIGH SCHOOL                             ║
+║                  NSC - BASIC EDUCATION                                 ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+📍 Cape Town, South Africa
+📅 Jan 2012 - Dec 2016
+🎓 Grade: A-
+
+Activities & Societies:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• First Team Netball Captain
+• Current Affairs Society Member
+• First Aid Team Member
+• Cross Country Club Member
+• Social Diving & Swimming Club Member
+• Social Tennis & Squash Club Member
+
+Academic Performance:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Maintained a consistent record of academic excellence throughout
+
+Skills Developed:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Problem-solving and critical thinking
+• Public speaking and communication
+• Ability to understand and explain complex information
+• Leadership and teamwork
+`,
+        },
+      ],
     },
     {
-      name: 'certifications',
-      type: 'directory',
+      name: "certifications",
+      type: "directory",
       children: [
         {
-          name: 'aws_cloud_practitioner.txt',
-          type: 'file',
+          name: "aws_cloud_practitioner.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
 ║          AWS CERTIFIED CLOUD PRACTITIONER                              ║
 ╚═══════════════════════════════════════════════════════════════════════╝
@@ -569,52 +683,69 @@ Validates foundational understanding of AWS Cloud concepts:
 • Cloud pricing and support models
 • Architectural best practices
 
-Credential ID: Available upon request
-`
+🔗 https://www.credly.com/badges/a05b31fc-dbb4-4216-8450-f51c8ac4dd66/public_url
+`,
         },
         {
-          name: 'cisco_certificate.txt',
-          type: 'file',
+          name: "ibm_ux_design_fundamentals.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║              CISCO - JAVASCRIPT ESSENTIALS                             ║
+║           USER EXPERIENCE DESIGN FUNDAMENTALS                          ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-🏅 Cisco Networking Academy
-📅 2023
+🏅 IBM SkillsBuild
+📅 2024
 
-JavaScript programming fundamentals:
-• Core JavaScript syntax and concepts
-• DOM manipulation
-• Event handling
-• Modern ES6+ features
-• Async programming patterns
+Covers essential UX design principles and product thinking:
+• Human-centered design process
+• User research and personas
+• Wireframing and prototyping basics
+• Usability and accessibility foundations
 
-Credential ID: Available upon request
-`
+🔗 https://www.credly.com/badges/e8388ac0-91ad-4d41-b636-ed3c2b1273a5/public_url
+`,
         },
         {
-          name: 'webflow.txt',
-          type: 'file',
+          name: "ibm_project_management_fundamentals.txt",
+          type: "file",
           content: `╔═══════════════════════════════════════════════════════════════════════╗
-║                    WEBFLOW 101                                         ║
+║             PROJECT MANAGEMENT FUNDAMENTALS                            ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-🏅 Webflow University
-📅 2023
+🏅 IBM SkillsBuild
+📅 2024
 
-No-code web development fundamentals:
-• Visual web design
-• Responsive layouts
-• CMS integration
-• Interactions & animations
-• Publishing & hosting
+Validates project delivery knowledge across planning and execution:
+• Defining project scope and objectives
+• Scheduling, milestones, and deliverables
+• Risk identification and mitigation
+• Agile and traditional project management basics
 
-Credential ID: Available upon request
-`
-        }
-      ]
-    }
-  ]
+🔗 https://www.credly.com/badges/e7203af1-1f13-473b-90c3-36cd3198569f/public_url
+`,
+        },
+        {
+          name: "ibm_sql_relational_databases_101.txt",
+          type: "file",
+          content: `╔═══════════════════════════════════════════════════════════════════════╗
+║             SQL AND RELATIONAL DATABASES 101                           ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+🏅 IBM SkillsBuild / Skills Network
+📅 2024
+
+Covers relational database foundations and SQL querying:
+• Relational database concepts and schema design
+• SQL SELECT queries and filtering
+• Joins, grouping, and aggregation
+• Database normalization basics
+
+🔗 https://courses.skillsbuild.skillsnetwork.site/certificates/2536f3fca5684a4aada4a7a3987be9dc
+`,
+        },
+      ],
+    },
+  ],
 };
 
 export const HELP_TEXT = `

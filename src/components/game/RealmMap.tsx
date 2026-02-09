@@ -46,7 +46,7 @@ export const KingdomMap = ({
 
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 md:py-16">
+    <div className="min-h-[100svh] flex flex-col items-center justify-center px-4 py-12 md:py-16">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -63,10 +63,10 @@ export const KingdomMap = ({
         {/* Progress bar */}
         <div className="flex items-center justify-center gap-3 mt-4">
           <Trophy className="w-5 h-5 text-accent" />
-          <div className="w-48 h-2 rounded-full bg-secondary overflow-hidden">
+          <div className="w-60 h-2 rounded-full bg-secondary overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: `${(totalUnlocked / totalMissions) * 100}%` }}
+              animate={{ width: `${(totalUnlocked / totalMissions) * 100 }%` }}
               transition={{ duration: 1 }}
               className="h-full bg-gradient-to-r from-primary to-accent"
             />
@@ -78,7 +78,7 @@ export const KingdomMap = ({
             variant="ghost"
             size="sm"
             onClick={onReset}
-            className="text-muted-foreground hover:text-foreground ml-2"
+            className="text-muted-foreground hover:text-foreground "
           >
             <RotateCcw className="w-4 h-4" />
           </Button>
@@ -176,7 +176,7 @@ export const KingdomMap = ({
         </div>
 
         {/* Kingdom nodes - Mobile (grid layout) */}
-        <div className="sm:hidden absolute inset-0 flex flex-col items-center justify-center">
+        <div className="sm:hidden flex flex-col items-center justify-center">
           {/* About Me (mobile, above grid) */}
           <motion.div
             initial={{ scale: 0 }}
@@ -187,9 +187,9 @@ export const KingdomMap = ({
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={onAboutClick}
-              className="w-48 h-16 rounded-full border-2 border-accent bg-card/90 flex flex-col items-center justify-center glow-gold transition-all"
+              className="w-48 h-12 rounded-full border-2 border-accent bg-card/90 flex flex-col items-center justify-center glow-gold transition-all"
             >
-              <User className="w-8 h-8 text-accent mb-1" />
+              <User className="w-4 h-4 text-accent mb-0.5" />
               <span className="font-display text-xs text-accent">About Me</span>
             </motion.button>
           </motion.div>
@@ -218,7 +218,7 @@ export const KingdomMap = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="text-center text-muted-foreground text-sm absolute bottom-2"
+        className="absolute bottom-2 text-center text-muted-foreground text-sm pb-[env(safe-area-inset-bottom)]"
       >
         Click a kingdom to explore its missions
       </motion.p>

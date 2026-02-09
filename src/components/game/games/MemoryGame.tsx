@@ -27,16 +27,13 @@ import {
 } from "react-icons/si";
 
 import { GiSoapExperiment, GiStarSwirl } from "react-icons/gi";
-import { TbJson } from "react-icons/tb";
-import { LuBrainCircuit, LuFileBadge, LuLayoutDashboard } from "react-icons/lu";
+import { TbJson, TbDeviceAnalytics } from "react-icons/tb";
+import { LuBrainCircuit, LuFileBadge, LuLayoutDashboard, LuBuilding2 } from "react-icons/lu";
 
 
 
 
-import {
-  RiFormula
-}
-from "react-icons/ri"
+import { RiFormula, RiStackLine } from "react-icons/ri";
 
 import {
   FaCloud,
@@ -151,6 +148,11 @@ export const techIcons: Record<string, IconType> = {
   Editing: FaEdit,
   Dashboard: LuLayoutDashboard,
   Upload: FaCloudUploadAlt,
+  Properties: LuBuilding2,
+  Fullstack: RiStackLine,
+  Analytics: TbDeviceAnalytics,
+  Projects: FaBriefcase
+  
 };
 
 
@@ -328,7 +330,7 @@ export const MemoryGame = ({
         />
       </div>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
+      <div className="grid grid-cols-4 gap-2 sm:gap-3">
         <AnimatePresence>
           {cards.map((card) => {
             const Icon = techIcons[card.value];

@@ -14,7 +14,7 @@ interface GameModalProps {
   onClose: () => void;
 }
 
-type GameChoice = "memory" | "crossword" | "dragdrop" | "candycrush" | null;
+type GameChoice = "memory" | "crossword" | "candycrush" | null;
 
 const gameInfo = {
   memory: {
@@ -26,11 +26,6 @@ const gameInfo = {
     icon: FileText,
     title: "Tech Crossword",
     description: "Solve clues related to the technologies used",
-  },
-  dragdrop: {
-    icon: Layers,
-    title: "Architecture Builder",
-    description: "Arrange the layers in the correct order",
   },
   candycrush: {
     icon: Gamepad2,
